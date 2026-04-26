@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高校赋能·家校社四维共振协同育人新体系 | 湖南科技大学</title>
+    <style>
+        :root {
+            --bg: #f4f7fc;
+            --surface: #ffffff;
+            --surface-light: #eef4fb;
+            --primary: #1a5c9e;
+            --primary-glow: rgba(26, 92, 158, 0.2);
+            --accent: #2e7d32;
+            --text: #1a2b3c;
+            --text-muted: #556677;
+            --border: #dce4ec;
+            --radius: 14px;
+            --radius-lg: 22px;
+            --font: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.06);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: var(--font);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: -250px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(26, 92, 158, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(46, 125, 50, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 40px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            transition: 0.3s;
+        }
+        .navbar.scrolled {
+            padding: 10px 40px;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: var(--shadow-md);
+        }
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(46, 125, 50, 0.4);
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                box-shadow: 0 0 10px rgba(46, 125, 50, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 22px rgba(46, 125, 50, 0.6), 0 0 34px rgba(46, 125, 50, 0.3);
+            }
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.93rem;
+            font-weight: 500;
+            padding: 6px 0;
+            transition: 0.3s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: 0.3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-cta {
+            background: var(--primary) !important;
+            color: #fff !important;
+            padding: 10px 22px !important;
+            border-radius: 30px;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 14px var(--primary-glow);
+        }
+        .nav-cta:hover {
+            background: #164a80;
+            transform: translateY(-1px);
+        }
+        .nav-cta::after {
+            display: none !important;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 26px;
+            height: 2.5px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 30px 80px;
+            background: linear-gradient(135deg, #e8f0f8 0%, #f0f5fa 50%, #f5f8fc 100%);
+            background-attachment: fixed;
+        }
+        .hero-content {
+            max-width: 780px;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .hero h1 {
+            font-size: 3.4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #0f2b45;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, #3a7ec8 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+            max-width: 580px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 8px 22px var(--primary-glow);
+        }
+        .btn-primary:hover {
+            background: #164a80;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .btn-outline:hover {
+            background: rgba(26, 92, 158, 0.05);
+            transform: translateY(-2px);
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            animation: fadeInUp 1s ease-out 0.8s both;
+            z-index: 2;
+        }
+        .scroll-mouse {
+            width: 26px;
+            height: 40px;
+            border: 2px solid var(--text-muted);
+            border-radius: 14px;
+            position: relative;
+        }
+        .scroll-mouse::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 2px;
+            animation: scroll-wheel 1.5s infinite;
+        }
+        @keyframes scroll-wheel {
+            0% {
+                top: 8px;
+                opacity: 1;
+            }
+            100% {
+                top: 24px;
+                opacity: 0;
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 通用区块 */
+        .section {
+            position: relative;
+            z-index: 1;
+            padding: 90px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: all 0.8s ease-out;
+        }
+        
+        /* 背景图片渐变叠加层 */
+        .section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.87) 0%, rgba(255,255,255,0.80) 50%, rgba(255,255,255,0.83) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .section-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        .section-title {
+            font-size: 2.6rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: #0f2b45;
+            position: relative;
+            z-index: 2;
+        }
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1.08rem;
+            max-width: 620px;
+            margin-bottom: 46px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 四维模式卡片 */
+        
+        /* 各section背景图片定义 */
+        #overview {
+            background-image: url('images/2.jpg');
+        }
+        
+        #mode {
+            background-image: url('images/3.jpg');
+        }
+        
+        #shumeng {
+            background-image: url('images/4.jpg');
+        }
+        
+        #achievements {
+            background-image: url('images/5.jpg');
+        }
+        
+        #team {
+            background-image: url('images/6.jpg');
+        }
+        
+        #contact {
+            background-image: url('images/7.jpg');
+        }
+        
+        /* 部分section的备用纯色背景（图片未加载时显示） */
+        #overview { background-color: #e8f4f8; }
+        #mode { background-color: #f0f8e8; }
+        #shumeng { background-color: #f8f0e8; }
+        #achievements { background-color: #f8e8f0; }
+        #team { background-color: #e8f0f8; }
+        #contact { background-color: #f0e8f8; }
+        
+        /* 确保section内的所有内容显示在背景和渐变层上方 */
+        .section > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .mode-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .mode-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: var(--shadow-sm);
+        }
+        .mode-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+        .mode-card .mode-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(26, 92, 158, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 18px;
+        }
+        .mode-card h4 {
+            font-size: 1.15rem;
+            color: #0f2b45;
+            margin-bottom: 8px;
+        }
+        .mode-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* 项目成果数据 */
+        .stats-row {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px 32px;
+            text-align: center;
+            min-width: 140px;
+            box-shadow: var(--shadow-sm);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+            background: rgba(26, 92, 158, 0.02);
+        }
+        .stat-card h3 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .stat-card span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* 团队卡片 */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .team-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: 0.3s;
+        }
+        .team-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        .team-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(26, 92, 158, 0.1);
+            margin: 0 auto 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        .team-card h5 {
+            font-size: 1.05rem;
+            color: #0f2b45;
+            margin-bottom: 4px;
+        }
+        .team-card .role {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .team-card .task {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* 作品/风采展示网格 */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .showcase-item {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .showcase-item:hover {
+            transform: scale(1.03);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+        .showcase-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, transparent 55%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .showcase-item:hover .showcase-overlay {
+            opacity: 1;
+        }
+        .showcase-overlay h5 {
+            font-size: 1rem;
+            color: #0f2b45;
+        }
+        .showcase-overlay span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* 联系 */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 44px;
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 44px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            z-index: 2;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.3s;
+            resize: vertical;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 92, 158, 0.12);
+        }
+
+        /* 页脚 */
+        .footer {
+            position: relative;
+            z-index: 100;
+            border-top: 1px solid var(--border);
+            padding: 28px 40px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 14px 28px;
+            border-radius: 30px;
+            z-index: 9999;
+            font-weight: 500;
+            pointer-events: none;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast.success {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* 模态框 */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            max-width: 900px;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 40px;
+            position: relative;
+            transform: translateY(20px);
+            transition: 0.3s;
+            box-shadow: var(--shadow-md);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        .modal-overlay.show .modal {
+            transform: translateY(0);
+        }
+        .modal-image-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .modal-carousel {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/3;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.4s;
+        }
+        .carousel-nav {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .carousel-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel-btn:hover {
+            background: #164a80;
+            transform: scale(1.1);
+        }
+        .carousel-btn.prev::before { content: '‹'; font-size: 1.5rem; }
+        .carousel-btn.next::before { content: '›'; font-size: 1.5rem; }
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+        .carousel-dot.active {
+            background: var(--primary);
+            transform: scale(1.3);
+        }
+        
+        /* 视频列表项 */
+        .video-item {
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: left;
+            font-size: 0.95rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .video-item::before {
+            content: '▶';
+            color: var(--primary);
+            font-size: 0.8rem;
+            min-width: 12px;
+        }
+        .video-item:hover {
+            background: rgba(26, 92, 158, 0.08);
+            border-color: var(--primary);
+            transform: translateX(4px);
+        }
+        .video-item.active {
+            background: rgba(26, 92, 158, 0.15);
+            border-color: var(--primary);
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow-y: auto;
+            max-height: 70vh;
+            padding-right: 8px;
+        }
+        .modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-content::-webkit-scrollbar-track {
+            background: var(--surface-light);
+            border-radius: 3px;
+        }
+        .modal-content::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        @media (max-width: 900px) {
+            .modal {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+            .modal-content {
+                max-height: auto;
+            }
+        }
+        .modal-close {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+            line-height: 1;
+        }
+        .modal-close:hover {
+            color: var(--primary);
+        }
+        
+        /* 成果展示弹窗样式 */
+        .modal-showcase-wrapper {
+            grid-column: 1;
+        }
+        #modalOverlay .modal {
+            grid-template-columns: 1fr;
+            max-width: 680px;
+        }
+        #modalOverlay .modal img {
+            width: 100%;
+            border-radius: var(--radius);
+            margin-bottom: 18px;
+            border: 1px solid var(--border);
+        }
+        #modalOverlay .modal h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: #0f2b45;
+        }
+        #modalOverlay .modal p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        /* 返回顶部 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: none;
+            color: #fff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 6px 18px var(--primary-glow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: 0.4s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: #164a80;
+        }
+
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 270px;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(30px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 26px;
+                transition: right 0.4s;
+                z-index: 1000;
+                border-left: 1px solid var(--border);
+            }
+            .nav-links.open {
+                right: 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .mode-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .showcase-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .section {
+                padding: 60px 24px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        @media (max-width: 550px) {
+            .mode-grid,
+            .team-grid,
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            .stats-row {
+                gap: 12px;
+            }
+            .stat-card {
+                min-width: 100px;
+                padding: 20px 16px;
+            }
+            .stat-card h3 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="nav-logo"><span class="logo-dot"></span>家校社·四维共振</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="nav-link">首页</a></li>
+            <li><a href="#overview" class="nav-link">项目概述</a></li>
+            <li><a href="#mode" class="nav-link">四维模式</a></li>
+            <li><a href="#shumeng" class="nav-link">数梦空间</a></li>
+            <li><a href="#achievements" class="nav-link">项目成果</a></li>
+            <li><a href="#team" class="nav-link">团队成员</a></li>
+            <li><a href="#contact" class="nav-cta">联系我们</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="菜单" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">🏫 湖南科技大学 · 大学生创新训练项目（省级）</div>
+            <h1><span class="highlight">高校赋能</span>·家校社<br><span class="highlight">四维共振</span>协同育人新体系</h1>
+            <p>聚焦"双减"背景下家校社协同育人难题，构建<strong>学校主导、高校赋能、家庭参与、社区联动</strong>的四维协同模式，以湘潭市九华江声中学为试点，探索可复制的现代化育人实践路径。</p>
+            <div class="hero-buttons">
+                <a href="#mode" class="btn btn-primary">四维模式详解</a>
+                <a href="#achievements" class="btn btn-outline">查看项目成果</a>
+            </div>
+        </div>
+        <div class="scroll-indicator"><div class="scroll-mouse"></div><span>向下滚动了解详情</span></div>
+    </section>
+
+    <!-- 项目概述 -->
+    <section class="section" id="overview">
+        <div class="section-label">项目概述</div>
+        <h2 class="section-title">以高校智慧赋能基础教育协同育人</h2>
+        <p class="section-desc">本项目以湘潭市雨湖区九华江声中学为试点，构建"学校主导、高校赋能、家庭参与、社区联动"的四维协同模式，开发50余节家庭教育微课，搭建智慧教育平台，建立三级家长委员会，开展大学生返乡社区教育服务，破解理念分歧、沟通低效、资源分散等痛点。</p>
+        <!-- 图片预留：项目总体框架图 -->
+        <div style="background:var(--surface); border:2px dashed var(--border); border-radius:var(--radius-lg); padding:40px; text-align:center; margin-bottom:30px; color:var(--text-muted);">
+            📷 <strong>【图片预留位置】</strong> 请在此处插入项目总体框架图或研究内容图（参考申报书中图1）<br>
+            <span style="font-size:0.85rem;">建议尺寸：宽1200px，替换方式：删除本段文字，添加 &lt;img src="images/framework.jpg" alt="研究内容框架图" style="width:100%; border-radius:14px;"&gt;</span>
+        </div>
+        <div class="stats-row">
+            <div class="stat-card" data-type="video" data-title="家庭教育微课" data-value="50" data-unit="节" data-description="开发了50余节针对初中生家庭教育的系列微课，涵盖学段衔接、心理健康、生涯规划、家校沟通等主题。" data-videos="导数与函数的单调性,正态分布,微课3（待上传）,微课4（待上传）" data-video0="videos/导数与函数的单调性.mp4" data-video1="videos/正态分布.mp4" data-video2="" data-video3="" style="cursor:pointer;">
+                <h3 class="counter" data-target="50">0</h3><span>家庭教育微课（节）</span>
+            </div>
+            <div class="stat-card" data-title="覆盖家庭" data-value="100" data-unit="户" data-description="项目覆盖了湘潭经开区内试点中学的100户家庭，涉及初中一、二年级学生及其家长。" data-images="images/family-1.jpg,images/family-2.jpg,images/family-3.jpg" style="cursor:pointer;">
+                <h3 class="counter" data-target="100">0</h3><span>覆盖家庭（户）</span>
+            </div>
+            <div class="stat-card" data-title="家长参与率" data-value="95" data-unit="%" data-description="通过多种渠道（家长学校、家长委员会、家访等）激发家长参与，家长参与家校活动的比例达到95%以上。" data-images="images/participation-1.jpg,images/participation-2.jpg,images/participation-3.jpg" style="cursor:pointer;">
+                <h3 class="counter" data-target="95">0</h3><span>家长参与率（%）</span>
+            </div>
+            <div class="stat-card" data-title="家长满意度" data-value="90" data-unit="%" data-description="通过问卷调查、座谈会等方式评估家长对项目的满意度，结果显示整体满意度达到90%以上。" data-images="images/satisfaction-1.jpg,images/satisfaction-2.jpg,images/satisfaction-3.jpg" style="cursor:pointer;">
+                <h3 class="counter" data-target="90">0</h3><span>家长满意度（%）</span>
+            </div>
+            <div class="stat-card" data-title="家庭教育指导师" data-value="25" data-unit="名" data-description="培育并认证了25名家庭教育指导师，其中2名获得国家二级心理咨询师资格，为家校社协同育人提供专业支撑。" data-images="images/instructors-1.jpg,images/instructors-2.jpg,images/instructors-3.jpg" style="cursor:pointer;">
+                <h3 class="counter" data-target="25">0</h3><span>家庭教育指导师（名）</span>
+            </div>
+            <div class="stat-card" data-title="试点初中" data-value="3" data-unit="所" data-description="项目在湘潭经开区内建立了3所试点初中，分别为九华江声中学、泉湖中学、智谷中学，形成协同育人试验阵地。" data-images="images/school-1.jpg,images/school-2.jpg,images/school-3.jpg" style="cursor:pointer;">
+                <h3 class="counter" data-target="3">0</h3><span>试点初中（所）</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 四维协同模式 -->
+    <section class="section" id="mode">
+        <div class="section-label">核心框架</div>
+        <h2 class="section-title">四维共振·协同育人模式</h2>
+        <p class="section-desc">以学校为主导，整合高校资源、家庭力量与社会支持，构建权责清晰、多方联动的现代化育人生态。</p>
+        <div class="mode-grid">
+            <div class="mode-card">
+                <div class="mode-icon">🏫</div>
+                <h4>学校主导</h4>
+                <p>成立由校长任组长的协同育人领导机构，建立三级家长委员会，统筹协同机制设计与过程监管，定期组织家长会、家访、家长开放日。</p>
+            </div>
+            <div class="mode-card">
+                <div class="mode-icon">🎓</div>
+                <h4>高校赋能</h4>
+                <p>联动湖南科技大学开发学科兴趣微课（数学思维动画等），组建大学生社会实践团队，为试点学校提供学术资源与专业指导。</p>
+            </div>
+            <div class="mode-card">
+                <div class="mode-icon">👨‍👩‍👧</div>
+                <h4>家庭参与</h4>
+                <p>落实个性化教育责任，家长参与学校管理决策，通过家长学校、膳食委员会等载体提升家庭教育素养，实现从"受教育者"到"教育合伙人"的转变。</p>
+            </div>
+            <div class="mode-card">
+                <div class="mode-icon">🏘️</div>
+                <h4>社区联动</h4>
+                <p>整合经开区企事业单位、图书馆、新时代文明实践站等资源，提供实践场域与社会支撑，开展社区志愿服务与劳动实践活动。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数梦空间志愿服务队 -->
+    <section class="section" id="shumeng">
+        <div class="section-label">特色品牌</div>
+        <h2 class="section-title">数梦空间志愿服务队 · D-ECPF模式</h2>
+        <p class="section-desc">数梦空间志愿服务队成立于2003年，现有志愿者2300名，采用<strong>D-ECPF模式</strong>（数字化-教育-协同-平台-反馈），协同校、社、村三方力量，开展青少年帮扶与老人关怀。</p>
+        <!-- 图片预留：D-ECPF模式图 -->
+        <div style="background:var(--surface); border:2px dashed var(--border); border-radius:var(--radius-lg); padding:30px; text-align:center; margin-bottom:30px; color:var(--text-muted);">
+            📷 <strong>【图片预留位置】</strong> 请在此处插入D-ECPF模式示意图或数梦空间团队活动合影<br>
+            <span style="font-size:0.85rem;">替换方式：&lt;img src="images/d-ecpf.jpg" alt="D-ECPF模式" style="width:100%; border-radius:14px;"&gt;</span>
+        </div>
+        <div class="mode-grid" style="grid-template-columns: repeat(5,1fr);">
+            <div class="mode-card"><div class="mode-icon">💻</div><h4>D · 数字化</h4><p>搭建数梦阳光课堂在线数字平台，实现教育数据实时共享与跨平台流转。</p></div>
+            <div class="mode-card"><div class="mode-icon">📚</div><h4>E · 教育</h4><p>围绕人文底蕴、科学精神等六大课程体系，开展差异化教学与心理健康团辅。</p></div>
+            <div class="mode-card"><div class="mode-icon">🤝</div><h4>C · 协同</h4><p>协同校、社、村三方主体力量，与各大高校、小学、幼儿园建立长期合作关系。</p></div>
+            <div class="mode-card"><div class="mode-icon">🖥️</div><h4>P · 平台</h4><p>"线上+线下"双机制，搭建实体化活动平台与志愿服务基地。</p></div>
+            <div class="mode-card"><div class="mode-icon">📋</div><h4>F · 反馈</h4><p>建立多层次反馈模式，通过问卷、座谈会、定期汇报等方式持续优化服务。</p></div>
+        </div>
+    </section>
+
+    <!-- 项目成果 -->
+    <section class="section" id="achievements">
+        <div class="section-label">项目成果</div>
+        <h2 class="section-title">阶段性成果与荣誉</h2>
+        <p class="section-desc">项目已在湘潭经开区3所初中开展试点，取得显著成效并获得多项荣誉。</p>
+        <div class="showcase-grid" id="showcaseGrid">
+            <div class="showcase-item" style="background:#e8f0f8;"
+            data-title="湘潭市'示范家长学校'"
+            data-category="荣誉资质 · 2024年"
+            data-description="九华江声中学家长学校在2024年被评为湘潭市'示范家长学校'，家长参与家校活动的比例达到95%以上，家长自愿参与家校活动得到质的飞跃。"
+            data-img="images/award1.jpg">
+            🏆
+            <div class="showcase-overlay"><div class="overlay-text"><h5>示范家长学校</h5><span>2024年市级荣誉</span></div></div>
+        </div>
+        <div class="showcase-item" style="background:#e8f5e9;"
+        data-title="家庭教育微课资源库"
+        data-category="课程建设 · 50+节"
+        data-description="建立了一套针对初中生家庭教育的、有实效有学校特色的家校社协同育人课程资源，涵盖学段衔接、心理健康、生涯规划、家校沟通等主题，其中12节课程入选省级家庭教育资源库。"
+        data-img="images/course1.jpg">
+        🎬
+        <div class="showcase-overlay"><div class="overlay-text"><h5>微课资源库</h5><span>50+节课程</span></div></div>
+    </div>
+    <div class="showcase-item" style="background:#fdf2e9;"
+    data-title="三级家长委员会机制"
+    data-category="机制创新"
+    data-description="创新建立班级、年级、校级三级家长委员会运作机制，设立校长信箱与家长开放日制度，构建起覆盖95%家庭的常态化沟通网络，家长逐渐实现从'受教育者'到'教育合伙人'的转变。"
+    data-img="images/committee.jpg">
+    👥
+    <div class="showcase-overlay"><div class="overlay-text"><h5>三级家委会</h5><span>机制创新</span></div></div>
+</div>
+</div>
+<div style="text-align:center; margin-top:30px;">
+    <p style="color:var(--text-muted); font-size:0.9rem;">
+        📄 <strong>更多成果：</strong>培育2名国家二级心理咨询师、25名家庭教育指导师 | 论文获省级奖项5项 | 成果在雨湖区德育会议、五校联合教研等平台推广 | 获《光明日报》《红网》等多家媒体报道
+    </p>
+</div>
+</section>
+
+<!-- 团队成员 -->
+<section class="section" id="team">
+    <div class="section-label">团队力量</div>
+    <h2 class="section-title">项目组成员</h2>
+    <p class="section-desc">来自湖南科技大学数学与统计学院的优秀学子，在指导老师丁爱霞的带领下开展研究与实践。</p>
+    <!-- 指导老师 -->
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px 30px; margin-bottom:30px; box-shadow:var(--shadow-sm); display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+        <div style="width:60px; height:60px; border-radius:50%; background:rgba(26,92,158,0.1); display:flex; align-items:center; justify-content:center; font-size:1.8rem;">👩‍🏫</div>
+        <div>
+            <h4 style="color:#0f2b45; margin-bottom:4px;">指导老师：丁爱霞</h4>
+            <p style="color:var(--text-muted); font-size:0.9rem;">长期从事教育课程改革与师范生技能培养研究，主持多项省级教改项目，担任九华江声中学挂职副校长，为项目提供坚实的理论指导与实践平台。</p>
+        </div>
+    </div>
+    <!-- 项目负责人 -->
+    <div class="team-grid">
+        <div class="team-card">
+            <div class="team-avatar">👩‍💼</div>
+            <h5>刘娇丽</h5>
+            <div class="role">项目负责人</div>
+            <div class="task">主导育人机制构建与资源整合；获国家级省级荣誉8项</div>
+        </div>
+        <div class="team-card">
+            <div class="team-avatar">👨‍🔬</div>
+            <h5>柏泉</h5>
+            <div class="role">核心成员</div>
+            <div class="task">负责调研分析与评价体系设计；任主席团团委第二副书记</div>
+        </div>
+        <div class="team-card">
+            <div class="team-avatar">👩‍🏫</div>
+            <h5>卢雅鸾</h5>
+            <div class="role">核心成员</div>
+            <div class="task">开发微课及职业体验课程；22数学三班</div>
+        </div>
+        <div class="team-card">
+            <div class="team-avatar">👩‍💻</div>
+            <h5>康晓婷</h5>
+            <div class="role">核心成员</div>
+            <div class="task">运营平台与策划社区活动；22数学三班</div>
+        </div>
+        <div class="team-card">
+            <div class="team-avatar">👩‍⚕️</div>
+            <h5>石婷婷</h5>
+            <div class="role">核心成员</div>
+            <div class="task">设计特殊学生心理干预方案；24数学五班</div>
+        </div>
+    </div>
+</section>
+
+<!-- 实践基地与合作单位 -->
+<section class="section" id="partners">
+    <div class="section-label">合作网络</div>
+    <h2 class="section-title">实践基地与合作单位</h2>
+    <p class="section-desc">项目已与多所中学、社区、乡村及高校建立长期稳定的合作关系。</p>
+    <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:16px;">
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🏫<br><strong>九华江声中学</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">试点学校·湘潭</span></div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🏘️<br><strong>合山社区</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">新时代文明实践站</span></div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🏡<br><strong>蓬瀛村</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">邵阳市城步县</span></div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🎓<br><strong>湖南科技大学</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">学术资源支持</span></div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🎓<br><strong>湘潭大学</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">数独课程合作</span></div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🏛️<br><strong>湘潭经开区教育局</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">政策支持</span></div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">👥<br><strong>区妇联</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">家庭教育联动</span></div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🏥<br><strong>九华街道社工站</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">心理服务协作</span></div>
+    </div>
+</section>
+
+<!-- 联系我们 -->
+<section class="section" id="contact">
+    <div class="section-label">联系我们</div>
+    <h2 class="section-title">期待交流与合作</h2>
+    <p class="section-desc">如果您对家校社协同育人项目感兴趣，欢迎留言交流。</p>
+    <div class="contact-wrapper">
+        <div>
+            <h4 style="color:#0f2b45; margin-bottom:10px;">项目联系方式</h4>
+            <p style="color:var(--text-muted); margin-bottom:16px;">湖南科技大学 · 数学与统计学院</p>
+            <p style="color:var(--text-muted);">📧 指导老师邮箱：axding@126.com</p>
+            <p style="color:var(--text-muted);">📞 项目负责人：18674794252（刘娇丽）</p>
+            <p style="color:var(--text-muted);">📍 地址：湖南省湘潭市·湖南科技大学</p>
+            <p style="color:var(--text-muted);">🏫 试点学校：湘潭市雨湖区九华江声中学</p>
+        </div>
+        <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+            <input type="text" placeholder="您的姓名 *" required>
+            <input type="email" placeholder="电子邮箱 *" required>
+            <input type="text" placeholder="单位/学校名称">
+            <textarea placeholder="请描述您想了解的内容或合作意向..." rows="4" required></textarea>
+            <button type="submit" class="btn btn-primary">发送消息</button>
+        </form>
+    </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+    <span>© 2025 高校赋能·家校社四维共振协同育人新体系 | 湖南科技大学</span>
+    <div class="footer-links">
+        <a href="#home">首页</a><a href="#overview">项目概述</a><a href="#mode">四维模式</a><a href="#shumeng">数梦空间</a><a href="#achievements">成果</a><a href="#team">团队</a>
+    </div>
+</footer>
+
+<!-- 弹窗 -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <div class="modal-showcase-wrapper">
+            <img id="modalImg" src="" alt="详情图片" style="display:block;">
+            <h3 id="modalTitle"></h3>
+            <span id="modalCategory" style="color:var(--primary); font-weight:500; display:block; margin-bottom:12px;"></span>
+            <p id="modalDesc"></p>
+        </div>
+    </div>
+</div>
+
+<!-- 视频播放弹窗 -->
+<div class="modal-overlay" id="videoOverlay">
+    <div class="modal" style="grid-template-columns: 1fr 1fr; max-width: 1000px;">
+        <button class="modal-close" id="videoClose" style="position: absolute; top: 14px; right: 18px;">&times;</button>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="position: relative; width: 100%; aspect-ratio: 16/9; background: #000; border-radius: var(--radius-lg); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <video id="videoPlayer" width="100%" height="100%" style="width: 100%; height: 100%; object-fit: contain;" controls>
+                    <source src="" type="video/mp4">
+                    您的浏览器不支持视频播放
+                </video>
+            </div>
+            <div style="text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                <span id="videoTitle"></span>
+            </div>
+        </div>
+        <div class="modal-content">
+            <h2 id="videoDetailTitle" style="font-size: 1.8rem; margin-bottom: 8px; color: #0f2b45;"></h2>
+            <div id="videoDetailValue" style="font-size: 1.2rem; color: var(--primary); font-weight: 600; margin-bottom: 16px;">
+                <span id="videoValue"></span><span id="videoUnit" style="font-size: 0.95rem; margin-left: 4px;"></span>
+            </div>
+            <div style="height: 1px; background: var(--border); margin-bottom: 16px;"></div>
+            <p id="videoDetailDesc" style="color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; margin-bottom: 24px;"></p>
+            
+            <div style="margin-bottom: 16px;">
+                <h4 style="color: #0f2b45; margin-bottom: 12px; font-weight: 600;">微课列表</h4>
+                <div id="videoList" style="display: flex; flex-direction: column; gap: 8px; max-height: 300px; overflow-y: auto; padding-right: 8px;">
+                    <!-- 视频项会动态生成 -->
+                </div>
+            </div>
+            
+            <div id="videoPlaceholder" style="background: var(--surface-light); border: 2px dashed var(--border); border-radius: var(--radius); padding: 20px; text-align: center; color: var(--text-muted); display: none;">
+                🎬 <strong>视频待上传</strong><br>
+                <span style="font-size: 0.8rem; display: block; margin-top: 8px;">后期上传后可直接播放</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 统计数据详情弹窗 -->
+<div class="modal-overlay" id="statDetailOverlay">
+    <div class="modal">
+        <div class="modal-image-wrapper">
+            <div class="modal-carousel" id="statCarousel">
+                <img id="statCarouselImg" src="" alt="详情图片" style="display:block;">
+            </div>
+            <div class="carousel-nav">
+                <button class="carousel-btn prev" id="carouselPrev"></button>
+                <div id="carouselDots" style="display:flex; gap:8px; flex-grow:1; justify-content:center;"></div>
+                <button class="carousel-btn next" id="carouselNext"></button>
+            </div>
+            <div id="statPlaceholder" style="background:var(--surface-light); border:2px dashed var(--border); border-radius:var(--radius); padding:30px; text-align:center; color:var(--text-muted);">
+                📷 <strong>【图片预留位置】</strong><br>
+                <span style="font-size:0.85rem; display:block; margin-top:8px;">等待上传相关图片...后期可通过更新data-images属性替换</span>
+            </div>
+        </div>
+        <div class="modal-content">
+            <button class="modal-close" id="statDetailClose" style="position: absolute; top: 14px; right: 18px;">&times;</button>
+            <h2 id="statDetailTitle" style="font-size:2rem; margin-bottom:8px; color:#0f2b45;"></h2>
+            <div id="statDetailValue" style="font-size:1.4rem; color:var(--primary); font-weight:600; margin-bottom:20px;">
+                <span id="statValue"></span><span id="statUnit" style="font-size:0.95rem; margin-left:4px;"></span>
+            </div>
+            <div style="height:1px; background:var(--border); margin-bottom:20px;"></div>
+            <p id="statDetailDesc" style="color:var(--text-muted); line-height:1.8; font-size:0.95rem;"></p>
+        </div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- 返回顶部 -->
+<button class="back-to-top" id="backToTop" title="回到顶部">↑</button>
+
+<script>
+    // 导航滚动
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
+        updateActiveNav();
+        toggleBackToTop();
+    });
+
+    // 移动端菜单
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    function toggleMenu() { hamburger.classList.toggle('active');
+        navLinks.classList.toggle('open'); }
+
+    function closeMenu() { hamburger.classList.remove('active');
+        navLinks.classList.remove('open'); }
+    document.addEventListener('click', (e) => { if (!navbar.contains(e.target) && navLinks.classList.contains(
+            'open')) closeMenu(); });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                const offset = navbar.offsetHeight + 20;
+                window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - offset,
+                    behavior: 'smooth' });
+                if (window.innerWidth <= 900) closeMenu();
+            }
+        });
+    });
+
+    // 导航高亮
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav-link');
+    function updateActiveNav() {
+        let currentId = '';
+        sections.forEach(section => { const sectionTop = section.getBoundingClientRect().top - 150; if (sectionTop <=
+                0) currentId = section.getAttribute('id'); });
+        navItems.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') ===
+                `#${currentId}`) link.classList.add('active'); });
+    }
+
+    // 弹窗
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalClose = document.getElementById('modalClose');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalCategory = document.getElementById('modalCategory');
+    document.querySelectorAll('.showcase-item').forEach(item => {
+        item.addEventListener('click', () => {
+            modalTitle.textContent = item.dataset.title;
+            modalDesc.textContent = item.dataset.description;
+            modalCategory.textContent = item.dataset.category;
+            const imgSrc = item.dataset.img;
+            if (imgSrc && imgSrc.trim() !== '') { modalImg.src = imgSrc;
+                modalImg.style.display = 'block';
+                modalImg.alt = item.dataset.title; } else { modalImg.style.display = 'none'; }
+            modalOverlay.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    function closeModal() { modalOverlay.classList.remove('show');
+        document.body.style.overflow = ''; }
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modalOverlay.classList.contains(
+            'show')) closeModal(); });
+
+    // 统计数据卡片弹窗
+    const statDetailOverlay = document.getElementById('statDetailOverlay');
+    const statDetailClose = document.getElementById('statDetailClose');
+    const statCarouselImg = document.getElementById('statCarouselImg');
+    const carouselPrev = document.getElementById('carouselPrev');
+    const carouselNext = document.getElementById('carouselNext');
+    const carouselDots = document.getElementById('carouselDots');
+    const statCarousel = document.getElementById('statCarousel');
+    const statDetailTitle = document.getElementById('statDetailTitle');
+    const statValue = document.getElementById('statValue');
+    const statUnit = document.getElementById('statUnit');
+    const statDetailDesc = document.getElementById('statDetailDesc');
+    const statPlaceholder = document.getElementById('statPlaceholder');
+    
+    let currentImageList = [];
+    let currentImageIndex = 0;
+
+    function updateCarousel() {
+        if (currentImageList.length === 0) {
+            statCarousel.style.display = 'none';
+            statPlaceholder.style.display = 'block';
+        } else {
+            statCarousel.style.display = 'flex';
+            statPlaceholder.style.display = 'none';
+            statCarouselImg.src = currentImageList[currentImageIndex];
+            
+            // 更新小圆点
+            document.querySelectorAll('.carousel-dot').forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentImageIndex);
+            });
+        }
+    }
+
+    function initCarouselDots() {
+        carouselDots.innerHTML = '';
+        currentImageList.forEach((_, idx) => {
+            const dot = document.createElement('div');
+            dot.className = 'carousel-dot' + (idx === 0 ? ' active' : '');
+            dot.addEventListener('click', () => {
+                currentImageIndex = idx;
+                updateCarousel();
+            });
+            carouselDots.appendChild(dot);
+        });
+    }
+
+    carouselPrev.addEventListener('click', () => {
+        if (currentImageList.length > 0) {
+            currentImageIndex = (currentImageIndex - 1 + currentImageList.length) % currentImageList.length;
+            updateCarousel();
+        }
+    });
+
+    carouselNext.addEventListener('click', () => {
+        if (currentImageList.length > 0) {
+            currentImageIndex = (currentImageIndex + 1) % currentImageList.length;
+            updateCarousel();
+        }
+    });
+
+    document.querySelectorAll('.stat-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const cardType = card.dataset.type || 'image';
+            
+            if (cardType === 'video') {
+                // 打开视频播放弹窗
+                const videoOverlay = document.getElementById('videoOverlay');
+                const videoDetailTitle = document.getElementById('videoDetailTitle');
+                const videoValue = document.getElementById('videoValue');
+                const videoUnit = document.getElementById('videoUnit');
+                const videoDetailDesc = document.getElementById('videoDetailDesc');
+                const videoList = document.getElementById('videoList');
+                const videoPlayer = document.getElementById('videoPlayer');
+                const videoTitle = document.getElementById('videoTitle');
+                const videoPlaceholder = document.getElementById('videoPlaceholder');
+                
+                videoDetailTitle.textContent = card.dataset.title;
+                videoValue.textContent = card.dataset.value;
+                videoUnit.textContent = card.dataset.unit;
+                videoDetailDesc.textContent = card.dataset.description;
+                
+                // 解析视频列表
+                const videosStr = card.dataset.videos || '';
+                const videoNames = videosStr.split(',').map(v => v.trim()).filter(v => v);
+                
+                videoList.innerHTML = '';
+                
+                if (videoNames.length === 0) {
+                    videoPlaceholder.style.display = 'block';
+                    videoPlayer.style.display = 'none';
+                    videoTitle.textContent = '';
+                } else {
+                    videoPlaceholder.style.display = 'none';
+                    videoPlayer.style.display = 'block';
+                    
+                    videoNames.forEach((name, idx) => {
+                        const item = document.createElement('div');
+                        item.className = 'video-item' + (idx === 0 ? ' active' : '');
+                        item.textContent = name;
+                        item.addEventListener('click', () => {
+                            // 更新视频源（目前为空，等待上传）
+                            const videoSrc = card.dataset['video' + idx] || '';
+                            if (videoSrc) {
+                                videoPlayer.src = videoSrc;
+                            } else {
+                                videoPlayer.src = '';
+                            }
+                            videoTitle.textContent = name;
+                            
+                            // 更新列表项选中状态
+                            document.querySelectorAll('#videoList .video-item').forEach((v, i) => {
+                                v.classList.toggle('active', i === idx);
+                            });
+                            
+                            // 自动播放
+                            videoPlayer.play();
+                        });
+                        videoList.appendChild(item);
+                    });
+                    
+                    // 默认加载第一个视频
+                    videoTitle.textContent = videoNames[0];
+                    const firstVideoSrc = card.dataset.video0 || '';
+                    if (firstVideoSrc) {
+                        videoPlayer.src = firstVideoSrc;
+                    }
+                }
+                
+                videoOverlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            } else {
+                // 打开图片轮播弹窗
+                statDetailTitle.textContent = card.dataset.title;
+                statValue.textContent = card.dataset.value;
+                statUnit.textContent = card.dataset.unit;
+                statDetailDesc.textContent = card.dataset.description;
+                
+                // 解析图片列表
+                const imagesStr = card.dataset.images || '';
+                currentImageList = imagesStr.split(',').map(img => img.trim()).filter(img => img);
+                currentImageIndex = 0;
+                
+                initCarouselDots();
+                updateCarousel();
+                
+                statDetailOverlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    function closeStatModal() { 
+        statDetailOverlay.classList.remove('show');
+        document.body.style.overflow = ''; 
+    }
+
+    statDetailClose.addEventListener('click', closeStatModal);
+    statDetailOverlay.addEventListener('click', (e) => { if (e.target === statDetailOverlay) closeStatModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && statDetailOverlay.classList.contains('show')) closeStatModal(); });
+
+    // 视频弹窗关闭
+    const videoOverlay = document.getElementById('videoOverlay');
+    const videoClose = document.getElementById('videoClose');
+    const videoPlayer = document.getElementById('videoPlayer');
+    
+    function closeVideoModal() { 
+        videoOverlay.classList.remove('show');
+        document.body.style.overflow = '';
+        videoPlayer.pause();
+    }
+    
+    videoClose.addEventListener('click', closeVideoModal);
+    videoOverlay.addEventListener('click', (e) => { if (e.target === videoOverlay) closeVideoModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && videoOverlay.classList.contains('show')) closeVideoModal(); });
+
+    // 数字动画
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = +el.dataset.target;
+                const duration = 1500;
+                const start = performance.now();
+                const step = (timestamp) => {
+                    const progress = Math.min((timestamp - start) / duration, 1);
+                    el.textContent = Math.floor(progress * target);
+                    if (progress < 1) requestAnimationFrame(step);
+                    else el.textContent = target;
+                };
+                requestAnimationFrame(step);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    // 返回顶部
+    const backToTop = document.getElementById('backToTop');
+    function toggleBackToTop() { if (window.scrollY > 500) backToTop.classList.add('visible');
+        else backToTop.classList.remove('visible'); }
+    backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    // 表单
+    function handleSubmit(event) {
+        event.preventDefault();
+        const form = event.target;
+        const inputs = form.querySelectorAll('input, textarea');
+        let allFilled = true;
+        inputs.forEach(input => { if (input.hasAttribute('required') && !input.value.trim()) allFilled =
+            false; });
+        if (allFilled) { showToast('消息已成功发送！感谢您的关注 🌟', 'success');
+            form.reset(); } else { showToast('请填写所有必填项。', ''); }
+    }
+    const toastEl = document.getElementById('toast');
+    let toastTimer;
+    function showToast(message, type) { clearTimeout(toastTimer);
+        toastEl.textContent = message;
+        toastEl.className = 'toast ' + (type || ''); void toastEl.offsetWidth;
+        toastEl.classList.add('show');
+        toastTimer = setTimeout(() => toastEl.classList.remove('show'), 3000); }
+
+    // 淡入动画
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)'; } });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.mode-card, .showcase-item, .team-card, .stat-card, .contact-wrapper').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
+        fadeObserver.observe(el);
+    });
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.querySelectorAll('.mode-card, .showcase-item, .team-card, .stat-card, .contact-wrapper')
+                .forEach(el => { const rect = el.getBoundingClientRect(); if (rect.top < window
+                        .innerHeight) { el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)'; } });
+        }, 200);
+    });
+</script>
+</body>
+</html>
