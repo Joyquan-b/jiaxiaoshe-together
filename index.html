@@ -1358,20 +1358,41 @@
 
 <!-- 访问量统计 -->
     <div style="text-align:center; padding:20px 0; margin-top:40px; color:var(--text-muted); font-size:0.9rem; border-top:1px solid var(--border);">
+        <span id="busuanzi_container_site_pv">
+            本站访问人数：<span id="busuanzi_value_site_pv">0</span>人
+        </span>
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <script>
             // 等待不蒜子加载完成后添加偏移量
-            var observer = new MutationObserver(function() {
+            function addOffset() {
                 var pv = document.getElementById('busuanzi_value_site_pv');
+                
                 if(pv && pv.textContent !== '') {
                     var actualCount = parseInt(pv.textContent) || 0;
-                    pv.textContent = actualCount + 1000; // 加上1000的偏移量
-                    observer.disconnect();
+                    // 确保即使不蒜子返回0，我们也显示至少1000
+                    if(actualCount === 0) {
+                        pv.textContent = '1000';
+                    } else {
+                        pv.textContent = actualCount + 1000; // 加上1000的偏移量
+                    }
                 }
-            });
-            observer.observe(document.body, {childList: true, subtree: true});
+            }
+            
+            // 使用定时器检查不蒜子是否加载完成
+            var checkInterval = setInterval(function() {
+                var pv = document.getElementById('busuanzi_value_site_pv');
+                
+                if(pv && pv.textContent !== '') {
+                    addOffset();
+                    clearInterval(checkInterval);
+                }
+            }, 500); // 每500毫秒检查一次
+            
+            // 10秒后停止检查
+            setTimeout(function() {
+                clearInterval(checkInterval);
+            }, 10000);
         </script>
-        本站访问人数：<span id="busuanzi_value_site_pv"></span>人
     </div>
 
 <!-- 弹窗 -->
