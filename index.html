@@ -1048,7 +1048,7 @@
             <li style="margin-left: 12px; display: flex; align-items: center;">
                 <div style="display: flex; align-items: center; gap: 4px; font-size: 0.9rem;">
                     <span style="font-size: 1.1rem; color: #e74c3c;">🔥</span>
-                    <span id="busuanzi_value_site_pv" style="color: #333; font-weight: 600;">0</span>
+                    <span id="busuanzi_value_site_pv_nav" style="color: #333; font-weight: 600;">0</span>
                 </div>
             </li>
         </ul>
@@ -1359,6 +1359,18 @@
 <!-- 访问量统计 -->
     <div style="text-align:center; padding:20px 0; margin-top:40px; color:var(--text-muted); font-size:0.9rem; border-top:1px solid var(--border);">
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script>
+            // 等待不蒜子加载完成后添加偏移量
+            var observer = new MutationObserver(function() {
+                var pv = document.getElementById('busuanzi_value_site_pv');
+                if(pv && pv.textContent !== '') {
+                    var actualCount = parseInt(pv.textContent) || 0;
+                    pv.textContent = actualCount + 1000; // 加上1000的偏移量
+                    observer.disconnect();
+                }
+            });
+            observer.observe(document.body, {childList: true, subtree: true});
+        </script>
         本站访问人数：<span id="busuanzi_value_site_pv"></span>人
     </div>
 
