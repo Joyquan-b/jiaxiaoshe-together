@@ -72,6 +72,14 @@
             -o-transform: translateZ(0);
             transform: translateZ(0); /* 优化移动端渲染 */
         }
+        .bg-layer-fade::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.65) 50%, rgba(255,255,255,0.70) 100%);
+            pointer-events: none;
+            transition: opacity 1.7s ease-in-out;
+        }
 
         body {
             font-family: var(--font);
@@ -285,10 +293,11 @@
             font-size: 1.15rem;
             color: var(--text-muted);
             margin-bottom: 36px;
-            max-width: 580px;
+            max-width: 650px;
             margin-left: auto;
             margin-right: auto;
             animation: fadeInUp 0.8s ease-out 0.2s both;
+            line-height: 1.8;
         }
         .hero-buttons {
             display: flex;
@@ -507,7 +516,7 @@
             color: var(--primary);
         }
         .stat-card span {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
         }
 
@@ -545,9 +554,9 @@
             color: var(--primary);
         }
         .team-card h5 {
-            font-size: 1.25rem;
-            color: #0f2b45;
-            margin-bottom: 4px;
+            font-size: 1.15rem;
+            margin: 12px 0 4px;
+            color: var(--text);
         }
         .team-card .role {
             font-size: 0.8rem;
@@ -603,12 +612,16 @@
             opacity: 1;
         }
         .showcase-overlay h5 {
-            font-size: 1rem;
-            color: #0f2b45;
+            font-size: 1.1rem;
+            margin: 0;
+            color: var(--text);
+            font-weight: 600;
         }
-        .showcase-overlay span {
-            font-size: 0.8rem;
+        .showcase-overlay p {
+            font-size: 0.9rem;
+            margin: 0;
             color: var(--text-muted);
+            line-height: 1.5;
         }
 
         /* 联系 */
@@ -1048,7 +1061,7 @@
             <li style="margin-left: 12px; display: flex; align-items: center;">
                 <div style="display: flex; align-items: center; gap: 4px; font-size: 0.9rem;">
                     <span style="font-size: 1.1rem; color: #e74c3c;">🔥</span>
-                    <span id="busuanzi_value_site_pv" style="color: #333; font-weight: 600;">0</span>
+                    <span id="busuanzi_value_site_pv_top" style="color: #333; font-weight: 600;">0</span>
                 </div>
             </li>
         </ul>
@@ -1122,32 +1135,32 @@
                     📚 家庭教育资源库
                 </h3>
                 <div class="showcase-grid">
-                    <div class="showcase-item" style="background:#e8f0f8; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="家长课堂" data-description="定期举办家长课堂，帮助家长掌握科学的育儿方法，提升家庭教育质量。" data-category="家庭教育" data-img="images/family-class.jpg">
+                    <div class="showcase-item" style="background:#e8f0f8; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="家长课堂" data-description="定期举办家长课堂，帮助家长掌握科学的育儿方法，提升家庭教育质量。" data-category="家庭教育" data-img="images/family-class.jpg" data-videos="videos/family-education-1.mp4,videos/family-education-2.mp4,videos/family-education-3.mp4">
                         <div style="font-size:2.2rem; margin-bottom:12px;">📖</div>
                         <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">家长课堂</h5>
                         <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">提升家庭教育质量</p>
                     </div>
-                    <div class="showcase-item" style="background:#ffeaa7; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="亲子活动" data-description="组织多样化的亲子活动，增进亲子关系，促进家庭和谐。" data-category="亲子互动" data-img="images/parent-child.jpg">
+                    <div class="showcase-item" style="background:#ffeaa7; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="亲子活动" data-description="组织多样化的亲子活动，增进亲子关系，促进家庭和谐。" data-category="亲子互动" data-img="images/parent-child.jpg" data-videos="videos/parent-child-1.mp4,videos/parent-child-2.mp4,videos/parent-child-3.mp4">
                         <div style="font-size:2.2rem; margin-bottom:12px;">👨‍👩‍👧‍👦</div>
                         <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">亲子活动</h5>
                         <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">增进亲子关系</p>
                     </div>
-                    <div class="showcase-item" style="background:#a29bfe; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="家庭教育讲座" data-description="邀请专家进行家庭教育专题讲座，分享先进教育理念。" data-category="专家讲座" data-img="images/lecture.jpg">
+                    <div class="showcase-item" style="background:#a29bfe; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="家庭教育讲座" data-description="邀请专家进行家庭教育专题讲座，分享先进教育理念。" data-category="专家讲座" data-img="images/lecture.jpg" data-videos="videos/lectures-1.mp4,videos/lectures-2.mp4,videos/lectures-3.mp4">
                         <div style="font-size:2.2rem; margin-bottom:12px;">🎤</div>
                         <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">专家讲座</h5>
                         <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">先进教育理念</p>
                     </div>
-                    <div class="showcase-item" style="background:#fd79a8; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="心理健康指导" data-description="提供专业的心理健康指导，帮助家长关注孩子心理发展。" data-category="心理健康" data-img="images/mental-health.jpg">
+                    <div class="showcase-item" style="background:#fd79a8; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="心理健康指导" data-description="提供专业的心理健康指导，帮助家长关注孩子心理发展。" data-category="心理健康" data-img="images/mental-health.jpg" data-videos="videos/mental-health-1.mp4,videos/mental-health-2.mp4,videos/mental-health-3.mp4">
                         <div style="font-size:2.2rem; margin-bottom:12px;">💆</div>
                         <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">心理健康</h5>
                         <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">关注心理发展</p>
                     </div>
-                    <div class="showcase-item" style="background:#fdcb6e; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="学习习惯培养" data-description="指导家长如何帮助孩子养成良好的学习习惯。" data-category="学习指导" data-img="images/study-habits.jpg">
+                    <div class="showcase-item" style="background:#fdcb6e; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="学习习惯培养" data-description="指导家长如何帮助孩子养成良好的学习习惯。" data-category="学习指导" data-img="images/study-habits.jpg" data-videos="videos/study-habits-1.mp4,videos/study-habits-2.mp4,videos/study-habits-3.mp4">
                         <div style="font-size:2.2rem; margin-bottom:12px;">📝</div>
                         <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">学习习惯</h5>
                         <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">培养良好习惯</p>
                     </div>
-                    <div class="showcase-item" style="background:#6c5ce7; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="沟通技巧培训" data-description="教授家长与孩子有效沟通的技巧和方法。" data-category="沟通技巧" data-img="images/communication.jpg">
+                    <div class="showcase-item" style="background:#6c5ce7; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="沟通技巧培训" data-description="教授家长与孩子有效沟通的技巧和方法。" data-category="沟通技巧" data-img="images/communication.jpg" data-videos="videos/communication-1.mp4,videos/communication-2.mp4,videos/communication-3.mp4">
                         <div style="font-size:2.2rem; margin-bottom:12px;">💬</div>
                         <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">沟通技巧</h5>
                         <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">有效沟通方法</p>
@@ -1155,47 +1168,38 @@
                 </div>
             </div>
             
-            <!-- 学科微课中心 -->
+            <!-- 见"微"知"数" -->
             <div>
                 <h3 style="text-align:center; font-size:1.5rem; color:#0f2b45; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid #2e7d32;">
-                    📖 学科微课中心
+                    🔍 见"微"知"数"
                 </h3>
                 <div class="showcase-grid">
-                    <div class="showcase-item" style="background:#e8f5e9; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="数学微课" data-description="开发了针对初中数学重点难点的系列微课，帮助学生掌握核心知识点。" data-category="学科微课" data-img="images/math-microcourse.jpg">
+                    <div class="showcase-item" style="background:#e8f5e9; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="数学微课" data-description="开发了针对初中数学重点难点的系列微课，帮助学生掌握核心知识点。" data-category="数学微课" data-img="images/math-microcourse.jpg">
                         <div style="font-size:2.2rem; margin-bottom:12px;">➗</div>
                         <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">数学微课</h5>
                         <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">掌握核心知识</p>
                     </div>
-                    <div class="showcase-item" style="background:#d1f2eb; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="物理微课" data-description="生动有趣的物理实验和原理讲解，激发学生学习兴趣。" data-category="学科微课" data-img="images/physics-microcourse.jpg">
+                    <div class="showcase-item" style="background:#d1f2eb; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="物理微课" data-description="生动有趣的物理实验和原理讲解，激发学生学习兴趣。" data-category="物理微课" data-img="images/physics-microcourse.jpg">
                         <div style="font-size:2.2rem; margin-bottom:12px;">⚛️</div>
                         <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">物理微课</h5>
                         <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">激发学习兴趣</p>
                     </div>
-                    <div class="showcase-item" style="background:#fce4ec; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="语文微课" data-description="经典文学赏析和写作技巧指导，提升学生语文素养。" data-category="学科微课" data-img="images/chinese-microcourse.jpg">
+                    <div class="showcase-item" style="background:#fce4ec; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="语文微课" data-description="经典文学赏析和写作技巧指导，提升学生语文素养。" data-category="语文微课" data-img="images/chinese-microcourse.jpg">
                         <div style="font-size:2.2rem; margin-bottom:12px;">📚</div>
                         <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">语文微课</h5>
                         <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">提升语文素养</p>
                     </div>
-                </div>
-            </div>
-            
-            <!-- 数学故事 -->
-            <div>
-                <h3 style="text-align:center; font-size:1.5rem; color:#0f2b45; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid #f57c00;">
-                    🔢 数学故事
-                </h3>
-                <div class="showcase-grid">
                     <div class="showcase-item" style="background:#ffeaa7; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="数学家的故事" data-description="介绍古今中外著名数学家的生平事迹和数学贡献，激励学生学习热情。" data-category="数学故事" data-img="images/mathematician-story.jpg">
                         <div style="font-size:2.2rem; margin-bottom:12px;">👤</div>
                         <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">数学家的故事</h5>
                         <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">激励学习热情</p>
                     </div>
-                    <div class="showcase-item" style="background:#fab1a0; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="趣味数学" data-description="生动有趣的数学趣题和游戏，让学生在玩乐中感受数学的魅力。" data-category="数学故事" data-img="images/fun-math.jpg">
+                    <div class="showcase-item" style="background:#fab1a0; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="趣味数学" data-description="生动有趣的数学趣题和游戏，让学生在玩乐中感受数学的魅力。" data-category="趣味数学" data-img="images/fun-math.jpg">
                         <div style="font-size:2.2rem; margin-bottom:12px;">🎲</div>
                         <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">趣味数学</h5>
                         <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">感受数学魅力</p>
                     </div>
-                    <div class="showcase-item" style="background:#74b9ff; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="数学史话" data-description="讲述数学发展历程中的重要事件和发现，拓展学生视野。" data-category="数学故事" data-img="images/math-history.jpg">
+                    <div class="showcase-item" style="background:#74b9ff; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="数学史话" data-description="讲述数学发展历程中的重要事件和发现，拓展学生视野。" data-category="数学史话" data-img="images/math-history.jpg">
                         <div style="font-size:2.2rem; margin-bottom:12px;">📜</div>
                         <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">数学史话</h5>
                         <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">拓展学生视野</p>
@@ -1363,35 +1367,43 @@
         </span>
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <script>
-            // 等待不蒜子加载完成后添加偏移量
-            function addOffset() {
-                var pv = document.getElementById('busuanzi_value_site_pv');
-                
-                if(pv && pv.textContent !== '') {
-                    var actualCount = parseInt(pv.textContent) || 0;
-                    // 确保即使不蒜子返回0，我们也显示至少1000
-                    if(actualCount === 0) {
-                        pv.textContent = '1000';
-                    } else {
-                        pv.textContent = actualCount + 1000; // 加上1000的偏移量
+            // 创建一个函数来应用偏移量
+            function applyOffset(elementId) {
+                const element = document.getElementById(elementId);
+                if(element) {
+                    const currentValue = parseInt(element.textContent) || 0;
+                    const adjustedValue = currentValue + 1000;
+                    // 避免重复添加偏移量
+                    if(currentValue < 1000) { // 如果当前值小于1000，说明是原始值
+                        element.textContent = adjustedValue.toString();
                     }
                 }
             }
             
-            // 使用定时器检查不蒜子是否加载完成
-            var checkInterval = setInterval(function() {
-                var pv = document.getElementById('busuanzi_value_site_pv');
-                
-                if(pv && pv.textContent !== '') {
-                    addOffset();
-                    clearInterval(checkInterval);
-                }
-            }, 500); // 每500毫秒检查一次
+            // 使用MutationObserver监听不蒜子更新
+            const targetElements = ['busuanzi_value_site_pv', 'busuanzi_value_site_pv_top'];
             
-            // 10秒后停止检查
-            setTimeout(function() {
-                clearInterval(checkInterval);
-            }, 10000);
+            targetElements.forEach(function(elementId) {
+                const element = document.getElementById(elementId);
+                if(element) {
+                    const observer = new MutationObserver(function(mutations) {
+                        mutations.forEach(function(mutation) {
+                            if (mutation.type === 'childList' || mutation.type === 'characterData') {
+                                applyOffset(elementId);
+                            }
+                        });
+                    });
+                    
+                    observer.observe(element, {
+                        childList: true,
+                        characterData: true,
+                        subtree: true
+                    });
+                    
+                    // 初始时也应用偏移量
+                    applyOffset(elementId);
+                }
+            });
         </script>
     </div>
 
@@ -1863,8 +1875,7 @@
     });
 </script>
 
-<!-- 不蒜子访问量统计脚本 -->
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 
 </body>
 </html>
