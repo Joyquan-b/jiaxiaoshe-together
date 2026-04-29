@@ -1370,7 +1370,7 @@
             // 创建一个函数来应用偏移量
             function applyOffset(elementId) {
                 const element = document.getElementById(elementId);
-                if(element) {
+                if(element && element.textContent.trim() !== '') {
                     const currentValue = parseInt(element.textContent) || 0;
                     const adjustedValue = currentValue + 1000;
                     // 避免重复添加偏移量
@@ -1383,6 +1383,40 @@
             // 使用MutationObserver监听不蒜子更新
             const targetElements = ['busuanzi_value_site_pv', 'busuanzi_value_site_pv_top'];
             
+            // 首先确保页面加载后执行一次
+            document.addEventListener('DOMContentLoaded', function() {
+                // 稍微延时以确保不蒜子已加载数据
+                setTimeout(() => {
+                    targetElements.forEach(function(elementId) {
+                        applyOffset(elementId);
+                    });
+                }, 1000);
+            });
+            
+            // 监听不蒜子脚本加载完成事件
+            if (window.Busuanzi) {
+                // 如果不蒜子已加载，直接应用偏移
+                setTimeout(() => {
+                    targetElements.forEach(function(elementId) {
+                        applyOffset(elementId);
+                    });
+                }, 1000);
+            }
+            
+            // 监听不蒜子计数完成事件
+            var script = document.querySelector('script[src*="busuanzi"]');
+            if (script) {
+                script.addEventListener('load', function() {
+                    // 不蒜子脚本加载完成后，稍等一下再应用偏移
+                    setTimeout(() => {
+                        targetElements.forEach(function(elementId) {
+                            applyOffset(elementId);
+                        });
+                    }, 1500);
+                });
+            }
+            
+            // 使用MutationObserver监听不蒜子更新
             targetElements.forEach(function(elementId) {
                 const element = document.getElementById(elementId);
                 if(element) {
@@ -1399,9 +1433,6 @@
                         characterData: true,
                         subtree: true
                     });
-                    
-                    // 初始时也应用偏移量
-                    applyOffset(elementId);
                 }
             });
         </script>
