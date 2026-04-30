@@ -29,6 +29,58 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* 固定背景层 - 用于平滑切换 */
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 1;
+            transition: none;
+        }
+        .bg-layer::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.65) 50%, rgba(255,255,255,0.70) 100%);
+            pointer-events: none;
+            transition: opacity 1.7s ease-in-out;
+        }
+        
+        /* 用于背景交叉淡入淡出的额外图层 */
+        .bg-layer-fade {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.7s ease-in-out;
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            -o-transform: translateZ(0);
+            transform: translateZ(0); /* 优化移动端渲染 */
+        }
+        .bg-layer-fade::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.65) 50%, rgba(255,255,255,0.70) 100%);
+            pointer-events: none;
+            transition: opacity 1.7s ease-in-out;
+        }
+
         body {
             font-family: var(--font);
             background-color: var(--bg);
@@ -73,7 +125,7 @@
             justify-content: space-between;
             padding: 14px 40px;
             background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--border);
             box-shadow: var(--shadow-sm);
             transition: 0.3s;
@@ -194,15 +246,28 @@
             justify-content: center;
             text-align: center;
             padding: 120px 30px 80px;
-            background: linear-gradient(135deg, #e8f0f8 0%, #f0f5fa 50%, #f5f8fc 100%);
+            /* 背景由固定层 bg-layer 控制 */
+            background: transparent;
+        }
+        
+        /* Hero 背景渐变叠加 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.65) 50%, rgba(255,255,255,0.70) 100%);
+            z-index: 1;
+            pointer-events: none;
         }
         .hero-content {
             max-width: 780px;
+            position: relative;
+            z-index: 2;
         }
         .hero-badge {
             display: inline-block;
             padding: 6px 18px;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.6);
             border: 1px solid var(--border);
             border-radius: 30px;
             font-size: 0.85rem;
@@ -228,10 +293,11 @@
             font-size: 1.15rem;
             color: var(--text-muted);
             margin-bottom: 36px;
-            max-width: 580px;
+            max-width: 650px;
             margin-left: auto;
             margin-right: auto;
             animation: fadeInUp 0.8s ease-out 0.2s both;
+            line-height: 1.8;
         }
         .hero-buttons {
             display: flex;
@@ -281,6 +347,7 @@
             color: var(--text-muted);
             font-size: 0.8rem;
             animation: fadeInUp 1s ease-out 0.8s both;
+            z-index: 2;
         }
         .scroll-mouse {
             width: 26px;
@@ -329,33 +396,56 @@
             padding: 90px 40px;
             max-width: 1200px;
             margin: 0 auto;
+            /* 移除固定背景，改用JS控制的固定层 */
+            background: transparent;
         }
-        .section-label {
+        
+        /* 各section背景图片定义 - 用于JS识别 */
+        #home {
+            /* 首页背景在bg-layer中设置 */
+        }
+        
+        #overview {
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 3px;
             color: var(--primary);
             margin-bottom: 10px;
             font-weight: 600;
+            position: relative;
+            z-index: 2;
         }
         .section-title {
             font-size: 2.6rem;
             font-weight: 700;
             margin-bottom: 14px;
             color: #0f2b45;
+            position: relative;
+            z-index: 2;
         }
         .section-desc {
             color: var(--text-muted);
             font-size: 1.08rem;
             max-width: 620px;
             margin-bottom: 46px;
+            position: relative;
+            z-index: 2;
         }
 
         /* 四维模式卡片 */
+        
+        /* 确保section内的所有内容显示在背景和渐变层上方 */
+        .section > * {
+            position: relative;
+            z-index: 2;
+        }
+
         .mode-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
+            position: relative;
+            z-index: 2;
         }
         .mode-card {
             background: var(--surface);
@@ -400,6 +490,8 @@
             justify-content: center;
             flex-wrap: wrap;
             margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
         }
         .stat-card {
             background: var(--surface);
@@ -424,7 +516,7 @@
             color: var(--primary);
         }
         .stat-card span {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
         }
 
@@ -433,6 +525,8 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
+            position: relative;
+            z-index: 2;
         }
         .team-card {
             background: var(--surface);
@@ -460,9 +554,9 @@
             color: var(--primary);
         }
         .team-card h5 {
-            font-size: 1.05rem;
-            color: #0f2b45;
-            margin-bottom: 4px;
+            font-size: 1.15rem;
+            margin: 12px 0 4px;
+            color: var(--text);
         }
         .team-card .role {
             font-size: 0.8rem;
@@ -481,6 +575,8 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
+            position: relative;
+            z-index: 2;
         }
         .showcase-item {
             position: relative;
@@ -516,12 +612,16 @@
             opacity: 1;
         }
         .showcase-overlay h5 {
-            font-size: 1rem;
-            color: #0f2b45;
+            font-size: 1.1rem;
+            margin: 0;
+            color: var(--text);
+            font-weight: 600;
         }
-        .showcase-overlay span {
-            font-size: 0.8rem;
+        .showcase-overlay p {
+            font-size: 0.9rem;
+            margin: 0;
             color: var(--text-muted);
+            line-height: 1.5;
         }
 
         /* 联系 */
@@ -534,6 +634,8 @@
             border: 1px solid var(--border);
             padding: 44px;
             box-shadow: var(--shadow-sm);
+            position: relative;
+            z-index: 2;
         }
         .contact-form {
             display: flex;
@@ -563,7 +665,7 @@
         /* 页脚 */
         .footer {
             position: relative;
-            z-index: 1;
+            z-index: 100;
             border-top: 1px solid var(--border);
             padding: 28px 40px;
             text-align: center;
@@ -856,6 +958,7 @@
                 right: -100%;
                 width: 270px;
                 height: 100vh;
+                max-height: 100vh;
                 background: rgba(255, 255, 255, 0.98);
                 backdrop-filter: blur(30px);
                 flex-direction: column;
@@ -864,6 +967,7 @@
                 transition: right 0.4s;
                 z-index: 1000;
                 border-left: 1px solid var(--border);
+                overflow-y: auto; /* 添加滚动以防止内容溢出 */
             }
             .nav-links.open {
                 right: 0;
@@ -921,9 +1025,28 @@
                 font-size: 1.8rem;
             }
         }
+        
+        /* 移动端特殊优化 */
+        @media (max-width: 768px) {
+            .bg-layer, .bg-layer-fade {
+                background-attachment: scroll; /* 在移动设备上避免背景固定导致的问题 */
+                position: fixed; /* 确保背景层正确定位 */
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+            
+            body {
+                -webkit-overflow-scrolling: touch; /* iOS平滑滚动 */
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- 固定背景层 -->
+    <div class="bg-layer-fade" id="bgLayerFade"></div>
+    <div class="bg-layer" id="bgLayer" style="background-image: url('images/1.jpg');"></div>
 
     <!-- 导航栏 -->
     <nav class="navbar" id="navbar">
@@ -931,11 +1054,16 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="#home" class="nav-link">首页</a></li>
             <li><a href="#overview" class="nav-link">项目概述</a></li>
-            <li><a href="#mode" class="nav-link">四维模式</a></li>
-            <li><a href="#shumeng" class="nav-link">数梦空间</a></li>
+            <li><a href="#mode" class="nav-link">U-ECPF体系资源</a></li>
             <li><a href="#achievements" class="nav-link">项目成果</a></li>
             <li><a href="#team" class="nav-link">团队成员</a></li>
             <li><a href="#contact" class="nav-cta">联系我们</a></li>
+            <li style="margin-left: 12px; display: flex; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 4px; font-size: 0.9rem;">
+                    <span style="font-size: 1.1rem; color: #e74c3c;">🔥</span>
+                    <span id="busuanzi_value_site_pv" style="color: #333; font-weight: 600;">0</span>
+                </div>
+            </li>
         </ul>
         <button class="hamburger" id="hamburger" aria-label="菜单" onclick="toggleMenu()">
             <span></span><span></span><span></span>
@@ -949,9 +1077,10 @@
             <h1><span class="highlight">高校赋能</span>·家校社<br><span class="highlight">四维共振</span>协同育人新体系</h1>
             <p>聚焦"双减"背景下家校社协同育人难题，构建<strong>学校主导、高校赋能、家庭参与、社区联动</strong>的四维协同模式，以湘潭市九华江声中学为试点，探索可复制的现代化育人实践路径。</p>
             <div class="hero-buttons">
-                <a href="#mode" class="btn btn-primary">四维模式详解</a>
+                <a href="#mode" class="btn btn-primary">U-ECPF模式详解</a>
                 <a href="#achievements" class="btn btn-outline">查看项目成果</a>
             </div>
+
         </div>
         <div class="scroll-indicator"><div class="scroll-mouse"></div><span>向下滚动了解详情</span></div>
     </section>
@@ -988,51 +1117,96 @@
         </div>
     </section>
 
-    <!-- 四维协同模式 -->
+    <!-- 平台资源中心 -->
     <section class="section" id="mode">
         <div class="section-label">核心框架</div>
-        <h2 class="section-title">四维共振·协同育人模式</h2>
-        <p class="section-desc">以学校为主导，整合高校资源、家庭力量与社会支持，构建权责清晰、多方联动的现代化育人生态。</p>
-        <div class="mode-grid">
-            <div class="mode-card">
-                <div class="mode-icon">🏫</div>
-                <h4>学校主导</h4>
-                <p>成立由校长任组长的协同育人领导机构，建立三级家长委员会，统筹协同机制设计与过程监管，定期组织家长会、家访、家长开放日。</p>
+        <h2 class="section-title">U-ECPF · 高校赋能四维协同育人体系</h2>
+        <p class="section-desc">以高校为核心引领，整合教育、协同、平台、成长四大赋能维度，构建权责清晰、多方联动的现代化育人生态。平台设置了家庭教育资源库、学科微课中心、数学故事等三个主要资源模块，实现了优质教育资源的常态化更新与无门槛开放共享。</p>
+        <p style="text-align:center; color:var(--text-muted); margin-bottom:40px; font-size:0.95rem;">
+            📊 <strong>累计成果：</strong>已累计上传学科微课 <span style="color:var(--primary); font-weight:700;">20余节</span>、家庭教育系列课程 <span style="color:var(--primary); font-weight:700;">10套</span>，收录家校社协同优秀实践案例 <span style="color:var(--primary); font-weight:700;">多个</span>
+        </p>
+        
+        <!-- 三个主要资源模块 -->
+        <div style="display:flex; flex-direction:column; gap:50px; position:relative; z-index:2;">
+            
+            <!-- 家庭教育资源库 -->
+            <div>
+                <h3 style="text-align:center; font-size:1.5rem; color:#0f2b45; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid #1a5c9e;">
+                    📚 家庭教育资源库
+                </h3>
+                <div class="showcase-grid">
+                    <div class="showcase-item" style="background:#e8f0f8; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="家长课堂" data-description="定期举办家长课堂，帮助家长掌握科学的育儿方法，提升家庭教育质量。" data-category="家庭教育" data-img="images/family-class.jpg" data-videos="videos/family-education-1.mp4,videos/family-education-2.mp4,videos/family-education-3.mp4">
+                        <div style="font-size:2.2rem; margin-bottom:12px;">📖</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">家长课堂</h5>
+                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">提升家庭教育质量</p>
+                    </div>
+                    <div class="showcase-item" style="background:#ffeaa7; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="亲子活动" data-description="组织多样化的亲子活动，增进亲子关系，促进家庭和谐。" data-category="亲子互动" data-img="images/parent-child.jpg" data-videos="videos/parent-child-1.mp4,videos/parent-child-2.mp4,videos/parent-child-3.mp4">
+                        <div style="font-size:2.2rem; margin-bottom:12px;">👨‍👩‍👧‍👦</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">亲子活动</h5>
+                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">增进亲子关系</p>
+                    </div>
+                    <div class="showcase-item" style="background:#a29bfe; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="家庭教育讲座" data-description="邀请专家进行家庭教育专题讲座，分享先进教育理念。" data-category="专家讲座" data-img="images/lecture.jpg" data-videos="videos/lectures-1.mp4,videos/lectures-2.mp4,videos/lectures-3.mp4">
+                        <div style="font-size:2.2rem; margin-bottom:12px;">🎤</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">专家讲座</h5>
+                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">先进教育理念</p>
+                    </div>
+                    <div class="showcase-item" style="background:#fd79a8; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="心理健康指导" data-description="提供专业的心理健康指导，帮助家长关注孩子心理发展。" data-category="心理健康" data-img="images/mental-health.jpg" data-videos="videos/mental-health-1.mp4,videos/mental-health-2.mp4,videos/mental-health-3.mp4">
+                        <div style="font-size:2.2rem; margin-bottom:12px;">💆</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">心理健康</h5>
+                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">关注心理发展</p>
+                    </div>
+                    <div class="showcase-item" style="background:#fdcb6e; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="学习习惯培养" data-description="指导家长如何帮助孩子养成良好的学习习惯。" data-category="学习指导" data-img="images/study-habits.jpg" data-videos="videos/study-habits-1.mp4,videos/study-habits-2.mp4,videos/study-habits-3.mp4">
+                        <div style="font-size:2.2rem; margin-bottom:12px;">📝</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">学习习惯</h5>
+                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">培养良好习惯</p>
+                    </div>
+                    <div class="showcase-item" style="background:#6c5ce7; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="沟通技巧培训" data-description="教授家长与孩子有效沟通的技巧和方法。" data-category="沟通技巧" data-img="images/communication.jpg" data-videos="videos/communication-1.mp4,videos/communication-2.mp4,videos/communication-3.mp4">
+                        <div style="font-size:2.2rem; margin-bottom:12px;">💬</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">沟通技巧</h5>
+                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">有效沟通方法</p>
+                    </div>
+                </div>
             </div>
-            <div class="mode-card">
-                <div class="mode-icon">🎓</div>
-                <h4>高校赋能</h4>
-                <p>联动湖南科技大学开发学科兴趣微课（数学思维动画等），组建大学生社会实践团队，为试点学校提供学术资源与专业指导。</p>
+            
+            <!-- 见"微"知"数" -->
+            <div>
+                <h3 style="text-align:center; font-size:1.5rem; color:#0f2b45; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid #2e7d32;">
+                    🔍 见"微"知"数"
+                </h3>
+                <div class="showcase-grid">
+                    <div class="showcase-item" style="background:#e8f5e9; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="数学微课" data-description="开发了针对初中数学重点难点的系列微课，帮助学生掌握核心知识点。" data-category="数学微课" data-img="images/math-microcourse.jpg">
+                        <div style="font-size:2.2rem; margin-bottom:12px;">➗</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">数学微课</h5>
+                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">掌握核心知识</p>
+                    </div>
+                    <div class="showcase-item" style="background:#d1f2eb; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="物理微课" data-description="生动有趣的物理实验和原理讲解，激发学生学习兴趣。" data-category="物理微课" data-img="images/physics-microcourse.jpg">
+                        <div style="font-size:2.2rem; margin-bottom:12px;">⚛️</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">物理微课</h5>
+                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">激发学习兴趣</p>
+                    </div>
+                    <div class="showcase-item" style="background:#fce4ec; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="语文微课" data-description="经典文学赏析和写作技巧指导，提升学生语文素养。" data-category="语文微课" data-img="images/chinese-microcourse.jpg">
+                        <div style="font-size:2.2rem; margin-bottom:12px;">📚</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">语文微课</h5>
+                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">提升语文素养</p>
+                    </div>
+                    <div class="showcase-item" style="background:#ffeaa7; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="数学家的故事" data-description="介绍古今中外著名数学家的生平事迹和数学贡献，激励学生学习热情。" data-category="数学故事" data-img="images/mathematician-story.jpg">
+                        <div style="font-size:2.2rem; margin-bottom:12px;">👤</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">数学家的故事</h5>
+                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">激励学习热情</p>
+                    </div>
+                    <div class="showcase-item" style="background:#fab1a0; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="趣味数学" data-description="生动有趣的数学趣题和游戏，让学生在玩乐中感受数学的魅力。" data-category="趣味数学" data-img="images/fun-math.jpg">
+                        <div style="font-size:2.2rem; margin-bottom:12px;">🎲</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">趣味数学</h5>
+                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">感受数学魅力</p>
+                    </div>
+                    <div class="showcase-item" style="background:#74b9ff; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="数学史话" data-description="讲述数学发展历程中的重要事件和发现，拓展学生视野。" data-category="数学史话" data-img="images/math-history.jpg">
+                        <div style="font-size:2.2rem; margin-bottom:12px;">📜</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">数学史话</h5>
+                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">拓展学生视野</p>
+                    </div>
+                </div>
             </div>
-            <div class="mode-card">
-                <div class="mode-icon">👨‍👩‍👧</div>
-                <h4>家庭参与</h4>
-                <p>落实个性化教育责任，家长参与学校管理决策，通过家长学校、膳食委员会等载体提升家庭教育素养，实现从"受教育者"到"教育合伙人"的转变。</p>
-            </div>
-            <div class="mode-card">
-                <div class="mode-icon">🏘️</div>
-                <h4>社区联动</h4>
-                <p>整合经开区企事业单位、图书馆、新时代文明实践站等资源，提供实践场域与社会支撑，开展社区志愿服务与劳动实践活动。</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 数梦空间志愿服务队 -->
-    <section class="section" id="shumeng">
-        <div class="section-label">特色品牌</div>
-        <h2 class="section-title">数梦空间志愿服务队 · D-ECPF模式</h2>
-        <p class="section-desc">数梦空间志愿服务队成立于2003年，现有志愿者2300名，采用<strong>D-ECPF模式</strong>（数字化-教育-协同-平台-反馈），协同校、社、村三方力量，开展青少年帮扶与老人关怀。</p>
-        <!-- 图片预留：D-ECPF模式图 -->
-        <div style="background:var(--surface); border:2px dashed var(--border); border-radius:var(--radius-lg); padding:30px; text-align:center; margin-bottom:30px; color:var(--text-muted);">
-            📷 <strong>【图片预留位置】</strong> 请在此处插入D-ECPF模式示意图或数梦空间团队活动合影<br>
-            <span style="font-size:0.85rem;">替换方式：&lt;img src="images/d-ecpf.jpg" alt="D-ECPF模式" style="width:100%; border-radius:14px;"&gt;</span>
-        </div>
-        <div class="mode-grid" style="grid-template-columns: repeat(5,1fr);">
-            <div class="mode-card"><div class="mode-icon">💻</div><h4>D · 数字化</h4><p>搭建数梦阳光课堂在线数字平台，实现教育数据实时共享与跨平台流转。</p></div>
-            <div class="mode-card"><div class="mode-icon">📚</div><h4>E · 教育</h4><p>围绕人文底蕴、科学精神等六大课程体系，开展差异化教学与心理健康团辅。</p></div>
-            <div class="mode-card"><div class="mode-icon">🤝</div><h4>C · 协同</h4><p>协同校、社、村三方主体力量，与各大高校、小学、幼儿园建立长期合作关系。</p></div>
-            <div class="mode-card"><div class="mode-icon">🖥️</div><h4>P · 平台</h4><p>"线上+线下"双机制，搭建实体化活动平台与志愿服务基地。</p></div>
-            <div class="mode-card"><div class="mode-icon">📋</div><h4>F · 反馈</h4><p>建立多层次反馈模式，通过问卷、座谈会、定期汇报等方式持续优化服务。</p></div>
+            
         </div>
     </section>
 
@@ -1079,45 +1253,60 @@
     <div class="section-label">团队力量</div>
     <h2 class="section-title">项目组成员</h2>
     <p class="section-desc">来自湖南科技大学数学与统计学院的优秀学子，在指导老师丁爱霞的带领下开展研究与实践。</p>
-    <!-- 指导老师 -->
-    <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px 30px; margin-bottom:30px; box-shadow:var(--shadow-sm); display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
-        <div style="width:60px; height:60px; border-radius:50%; background:rgba(26,92,158,0.1); display:flex; align-items:center; justify-content:center; font-size:1.8rem;">👩‍🏫</div>
+    
+    <!-- 指导老师 - 设计更气派的卡片 -->
+    <div style="background:linear-gradient(135deg, var(--surface) 0%, #f0f7ff 100%); border:1px solid rgba(26,92,158,0.2); border-radius:var(--radius-xl); padding:32px 40px; margin-bottom:40px; box-shadow:var(--shadow-md); display:flex; align-items:center; gap:24px; flex-wrap:wrap; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:0; left:0; width:6px; height:100%; background:linear-gradient(to bottom, #1a5c9e, #2e7d32);"></div>
+        <div style="width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg, #e8f0f8, #ffffff); display:flex; align-items:center; justify-content:center; font-size:2.2rem; box-shadow:0 6px 12px rgba(26,92,158,0.15); border:2px solid #e8f0f8;">
+            👩‍🏫
+        </div>
         <div>
-            <h4 style="color:#0f2b45; margin-bottom:4px;">指导老师：丁爱霞</h4>
-            <p style="color:var(--text-muted); font-size:0.9rem;">长期从事教育课程改革与师范生技能培养研究，主持多项省级教改项目，担任九华江声中学挂职副校长，为项目提供坚实的理论指导与实践平台。</p>
+            <h4 style="color:#0f2b45; margin-bottom:8px; font-size:1.4rem; font-weight:700;">指导老师：丁爱霞</h4>
+            <p style="color:var(--text-muted); font-size:1rem; line-height:1.7;">长期从事教育课程改革与师范生技能培养研究，主持多项省级教改项目，担任九华江声中学挂职副校长，为项目提供坚实的理论指导与实践平台。</p>
         </div>
     </div>
-    <!-- 项目负责人 -->
+    
+    <!-- 项目负责人 - 更气派的网格布局 -->
     <div class="team-grid">
         <div class="team-card">
-            <div class="team-avatar">👩‍💼</div>
-            <h5>刘娇丽</h5>
-            <div class="role">项目负责人</div>
-            <div class="task">主导育人机制构建与资源整合；获国家级省级荣誉8项</div>
+            <div class="team-avatar" style="box-shadow:0 8px 20px rgba(26, 92, 158, 0.2); border:3px solid #f0f7ff;">
+                👩‍💼
+            </div>
+            <h5 style="font-size:1.4rem; font-weight:700; margin:16px 0 8px;">刘娇丽</h5>
+            <div class="role" style="font-size:0.9rem; margin-bottom:12px; padding:6px 16px; border-radius:20px; display:inline-block; background:rgba(26, 92, 158, 0.1);">项目负责人</div>
+            <div class="task" style="font-size:0.9rem; line-height:1.6;">主导育人机制构建与资源整合；获国家级省级荣誉8项</div>
         </div>
         <div class="team-card">
-            <div class="team-avatar">👨‍🔬</div>
-            <h5>柏泉</h5>
-            <div class="role">核心成员</div>
-            <div class="task">负责调研分析与评价体系设计；任主席团团委第二副书记</div>
+            <div class="team-avatar" style="box-shadow:0 8px 20px rgba(46, 125, 50, 0.2); border:3px solid #e8f5e9;">
+                👨‍🔬
+            </div>
+            <h5 style="font-size:1.4rem; font-weight:700; margin:16px 0 8px;">柏泉</h5>
+            <div class="role" style="font-size:0.9rem; margin-bottom:12px; padding:6px 16px; border-radius:20px; display:inline-block; background:rgba(46, 125, 50, 0.1);">核心成员</div>
+            <div class="task" style="font-size:0.9rem; line-height:1.6;">负责调研分析与评价体系设计；任主席团团委第二副书记</div>
         </div>
         <div class="team-card">
-            <div class="team-avatar">👩‍🏫</div>
-            <h5>卢雅鸾</h5>
-            <div class="role">核心成员</div>
-            <div class="task">开发微课及职业体验课程；22数学三班</div>
+            <div class="team-avatar" style="box-shadow:0 8px 20px rgba(245, 124, 0, 0.2); border:3px solid #fbe9e7;">
+                👩‍🏫
+            </div>
+            <h5 style="font-size:1.4rem; font-weight:700; margin:16px 0 8px;">卢雅鸾</h5>
+            <div class="role" style="font-size:0.9rem; margin-bottom:12px; padding:6px 16px; border-radius:20px; display:inline-block; background:rgba(245, 124, 0, 0.1);">核心成员</div>
+            <div class="task" style="font-size:0.9rem; line-height:1.6;">开发微课及职业体验课程；22数学三班</div>
         </div>
         <div class="team-card">
-            <div class="team-avatar">👩‍💻</div>
-            <h5>康晓婷</h5>
-            <div class="role">核心成员</div>
-            <div class="task">运营平台与策划社区活动；22数学三班</div>
+            <div class="team-avatar" style="box-shadow:0 8px 20px rgba(156, 39, 176, 0.2); border:3px solid #f3e5f5;">
+                👩‍💻
+            </div>
+            <h5 style="font-size:1.4rem; font-weight:700; margin:16px 0 8px;">康晓婷</h5>
+            <div class="role" style="font-size:0.9rem; margin-bottom:12px; padding:6px 16px; border-radius:20px; display:inline-block; background:rgba(156, 39, 176, 0.1);">核心成员</div>
+            <div class="task" style="font-size:0.9rem; line-height:1.6;">运营平台与策划社区活动；22数学三班</div>
         </div>
-        <div class="team-card">
-            <div class="team-avatar">👩‍⚕️</div>
-            <h5>石婷婷</h5>
-            <div class="role">核心成员</div>
-            <div class="task">设计特殊学生心理干预方案；24数学五班</div>
+        <div class="team-card" style="grid-column: 2 / 4; justify-self: center; max-width: 300px;">
+            <div class="team-avatar" style="box-shadow:0 8px 20px rgba(239, 108, 0, 0.2); border:3px solid #fff3e0;">
+                👩‍⚕️
+            </div>
+            <h5 style="font-size:1.4rem; font-weight:700; margin:16px 0 8px;">石婷婷</h5>
+            <div class="role" style="font-size:0.9rem; margin-bottom:12px; padding:6px 16px; border-radius:20px; display:inline-block; background:rgba(239, 108, 0, 0.1);">核心成员</div>
+            <div class="task" style="font-size:0.9rem; line-height:1.6;">设计特殊学生心理干预方案；24数学五班</div>
         </div>
     </div>
 </section>
@@ -1153,23 +1342,101 @@
             <p style="color:var(--text-muted);">📍 地址：湖南省湘潭市·湖南科技大学</p>
             <p style="color:var(--text-muted);">🏫 试点学校：湘潭市雨湖区九华江声中学</p>
         </div>
-        <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
-            <input type="text" placeholder="您的姓名 *" required>
-            <input type="email" placeholder="电子邮箱 *" required>
-            <input type="text" placeholder="单位/学校名称">
-            <textarea placeholder="请描述您想了解的内容或合作意向..." rows="4" required></textarea>
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="handleFormSubmit(event)">
+            <input type="text" name="name" placeholder="您的姓名 *" required>
+            <input type="email" name="email" placeholder="电子邮箱 *" required>
+            <input type="text" name="organization" placeholder="单位/学校名称">
+            <textarea name="message" placeholder="请描述您想了解的内容或合作意向..." rows="4" required></textarea>
             <button type="submit" class="btn btn-primary">发送消息</button>
         </form>
     </div>
-</section>
+    </section>
 
 <!-- 页脚 -->
 <footer class="footer">
     <span>© 2025 高校赋能·家校社四维共振协同育人新体系 | 湖南科技大学</span>
     <div class="footer-links">
-        <a href="#home">首页</a><a href="#overview">项目概述</a><a href="#mode">四维模式</a><a href="#shumeng">数梦空间</a><a href="#achievements">成果</a><a href="#team">团队</a>
+        <a href="#home">首页</a><a href="#overview">项目概述</a><a href="#mode">U-ECPF</a><a href="#achievements">成果</a><a href="#team">团队</a>
     </div>
 </footer>
+
+<!-- 访问量统计 -->
+    <div style="text-align:center; padding:20px 0; margin-top:40px; color:var(--text-muted); font-size:0.9rem; border-top:1px solid var(--border);">
+        <span id="busuanzi_container_site_pv">
+            本站访问人数：<span id="busuanzi_value_site_pv">0</span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script>
+            // 创建一个函数来应用偏移量
+            function applyOffset(elementId) {
+                const element = document.getElementById(elementId);
+                if(element && element.textContent.trim() !== '') {
+                    const currentValue = parseInt(element.textContent) || 0;
+                    const adjustedValue = currentValue + 1000;
+                    // 避免重复添加偏移量
+                    if(currentValue < 1000) { // 如果当前值小于1000，说明是原始值
+                        element.textContent = adjustedValue.toString();
+                    }
+                }
+            }
+            
+            // 使用MutationObserver监听不蒜子更新
+            const targetElements = ['busuanzi_value_site_pv']; // 现在只有一个ID，因为两个地方都使用相同的ID
+            
+            // 首先确保页面加载后执行一次
+            document.addEventListener('DOMContentLoaded', function() {
+                // 稍微延时以确保不蒜子已加载数据
+                setTimeout(() => {
+                    targetElements.forEach(function(elementId) {
+                        applyOffset(elementId);
+                    });
+                }, 1000);
+            });
+            
+            // 监听不蒜子脚本加载完成事件
+            if (window.Busuanzi) {
+                // 如果不蒜子已加载，直接应用偏移
+                setTimeout(() => {
+                    targetElements.forEach(function(elementId) {
+                        applyOffset(elementId);
+                    });
+                }, 1000);
+            }
+            
+            // 监听不蒜子计数完成事件
+            var script = document.querySelector('script[src*="busuanzi"]');
+            if (script) {
+                script.addEventListener('load', function() {
+                    // 不蒜子脚本加载完成后，稍等一下再应用偏移
+                    setTimeout(() => {
+                        targetElements.forEach(function(elementId) {
+                            applyOffset(elementId);
+                        });
+                    }, 1500);
+                });
+            }
+            
+            // 使用MutationObserver监听不蒜子更新
+            targetElements.forEach(function(elementId) {
+                const element = document.getElementById(elementId);
+                if(element) {
+                    const observer = new MutationObserver(function(mutations) {
+                        mutations.forEach(function(mutation) {
+                            if (mutation.type === 'childList' || mutation.type === 'characterData') {
+                                applyOffset(elementId);
+                            }
+                        });
+                    });
+                    
+                    observer.observe(element, {
+                        childList: true,
+                        characterData: true,
+                        subtree: true
+                    });
+                }
+            });
+        </script>
+    </div>
 
 <!-- 弹窗 -->
 <div class="modal-overlay" id="modalOverlay">
@@ -1258,12 +1525,71 @@
 <button class="back-to-top" id="backToTop" title="回到顶部">↑</button>
 
 <script>
+    // 固定背景层切换
+    const bgLayer = document.getElementById('bgLayer');
+    const bgLayerFade = document.getElementById('bgLayerFade');
+    const sectionBackgrounds = {
+        'home': 'images/1.jpg',
+        'overview': 'images/2.jpg',
+        'mode': 'images/3.jpg',
+        'achievements': 'images/5.jpg',
+        'team': 'images/6.jpg',
+        'contact': 'images/7.jpg'
+    };
+    
+    let currentBg = 'home';
+    
+    function updateBackground() {
+        const sections = document.querySelectorAll('section[id]');
+        let currentSection = 'home';
+        
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            const threshold = window.innerHeight * 0.3;
+            if (rect.top <= threshold && rect.bottom >= threshold) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+        
+        if (currentSection !== currentBg && sectionBackgrounds[currentSection]) {
+            currentBg = currentSection;
+            
+            const newImageUrl = sectionBackgrounds[currentSection];
+            
+            // 立即将主层透明度设为0，准备淡入
+            bgLayer.style.opacity = '0';
+            
+            // 设置过渡时间
+            bgLayer.style.transition = 'opacity 1.7s ease-in-out';
+            bgLayerFade.style.transition = 'opacity 1.7s ease-in-out';
+            
+            // 设置淡入层的背景图片为当前显示的图片
+            bgLayerFade.style.backgroundImage = bgLayer.style.backgroundImage;
+            bgLayerFade.style.opacity = '1';
+            
+            // 设置新背景到主层
+            const img = new Image();
+            img.onload = function() {
+                bgLayer.style.backgroundImage = `url('${newImageUrl}')`;
+                
+                // 确保样式被应用
+                bgLayer.offsetHeight;
+                
+                // 开始交叉淡入淡出：当前层淡入，前一层淡出
+                bgLayer.style.opacity = '1';
+                bgLayerFade.style.opacity = '0';
+            };
+            img.src = newImageUrl;
+        }
+    }
+
     // 导航滚动
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         navbar.classList.toggle('scrolled', window.scrollY > 60);
         updateActiveNav();
         toggleBackToTop();
+        updateBackground();
     });
 
     // 移动端菜单
@@ -1535,15 +1861,21 @@
     backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
     // 表单
-    function handleSubmit(event) {
-        event.preventDefault();
+    function handleFormSubmit(event) {
         const form = event.target;
-        const inputs = form.querySelectorAll('input, textarea');
-        let allFilled = true;
-        inputs.forEach(input => { if (input.hasAttribute('required') && !input.value.trim()) allFilled =
-            false; });
-        if (allFilled) { showToast('消息已成功发送！感谢您的关注 🌟', 'success');
-            form.reset(); } else { showToast('请填写所有必填项。', ''); }
+        const submitBtn = form.querySelector('button[type="submit"]');
+        
+        // 显示发送中状态
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = '发送中...';
+        submitBtn.disabled = true;
+        
+        // 让表单正常提交，Formspree会在成功后自动跳转
+        setTimeout(() => {
+            // 如果提交失败（例如网络问题），恢复按钮状态
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }, 5000);
     }
     const toastEl = document.getElementById('toast');
     let toastTimer;
@@ -1573,5 +1905,8 @@
         }, 200);
     });
 </script>
+
+
+
 </body>
 </html>
