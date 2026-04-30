@@ -21,6 +21,10 @@
             --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.03);
             --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.06);
         }
+        .visitor-count-fade {
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -1061,7 +1065,7 @@
             <li style="margin-left: 12px; display: flex; align-items: center;">
                 <div style="display: flex; align-items: center; gap: 4px; font-size: 0.9rem;">
                     <span style="font-size: 1.1rem; color: #e74c3c;">🔥</span>
-                    <span id="busuanzi_value_site_pv" style="color: #333; font-weight: 600;">0</span>
+                    <span id="busuanzi_value_site_pv_nav" class="visitor-count-fade" style="color: #333; font-weight: 600;">0</span>
                 </div>
             </li>
         </ul>
@@ -1135,35 +1139,55 @@
                     📚 家庭教育资源库
                 </h3>
                 <div class="showcase-grid">
-                    <div class="showcase-item" style="background:#e8f0f8; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="家长课堂" data-description="定期举办家长课堂，帮助家长掌握科学的育儿方法，提升家庭教育质量。" data-category="家庭教育" data-img="images/family-class.jpg" data-videos="videos/family-education-1.mp4,videos/family-education-2.mp4,videos/family-education-3.mp4">
-                        <div style="font-size:2.2rem; margin-bottom:12px;">📖</div>
-                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">家长课堂</h5>
-                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">提升家庭教育质量</p>
+                    <div class="showcase-item" style="background:linear-gradient(135deg, #f0f5fc 0%, #e8f1fb 50%, #e0ecf9 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;" data-title="家长课堂" data-description="定期举办家长课堂，帮助家长掌握科学的育儿方法，提升家庭教育质量。" data-category="家庭教育" data-img="images/family-class.jpg" data-videos="videos/family-education-1.mp4,videos/family-education-2.mp4,videos/family-education-3.mp4">
+                        <!-- 教室背景图案 -->
+                        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(26,92,158,0.03) 10px, rgba(26,92,158,0.03) 20px);"></div>
+                        <div style="font-size:2.8rem; margin-bottom:8px; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));">📖</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem; z-index:1; font-weight:700;">家长课堂</h5>
+                        <p style="text-align:center; color:#556677; font-size:0.85rem; padding:0 12px; z-index:1;">提升家庭教育质量</p>
                     </div>
-                    <div class="showcase-item" style="background:#ffeaa7; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="亲子活动" data-description="组织多样化的亲子活动，增进亲子关系，促进家庭和谐。" data-category="亲子互动" data-img="images/parent-child.jpg" data-videos="videos/parent-child-1.mp4,videos/parent-child-2.mp4,videos/parent-child-3.mp4">
-                        <div style="font-size:2.2rem; margin-bottom:12px;">👨‍👩‍👧‍👦</div>
-                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">亲子活动</h5>
-                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">增进亲子关系</p>
+                    <div class="showcase-item" style="background:linear-gradient(135deg, #fffbf0 0%, #fffaf0 50%, #fff9ec 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;" data-title="亲子活动" data-description="组织多样化的亲子活动，增进亲子关系，促进家庭和谐。" data-category="亲子互动" data-img="images/parent-child.jpg" data-videos="videos/parent-child-1.mp4,videos/parent-child-2.mp4,videos/parent-child-3.mp4">
+                        <!-- 阳光家庭背景图案 -->
+                        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at 30% 30%, rgba(255,200,100,0.08) 0%, transparent 50%)"></div>
+                        <div style="font-size:2.8rem; margin-bottom:8px; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));">👨‍👩‍👧‍👦</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem; z-index:1; font-weight:700;">亲子活动</h5>
+                        <p style="text-align:center; color:#556677; font-size:0.85rem; padding:0 12px; z-index:1;">增进亲子关系</p>
                     </div>
-                    <div class="showcase-item" style="background:#a29bfe; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="家庭教育讲座" data-description="邀请专家进行家庭教育专题讲座，分享先进教育理念。" data-category="专家讲座" data-img="images/lecture.jpg" data-videos="videos/lectures-1.mp4,videos/lectures-2.mp4,videos/lectures-3.mp4">
-                        <div style="font-size:2.2rem; margin-bottom:12px;">🎤</div>
-                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">专家讲座</h5>
-                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">先进教育理念</p>
+                    <div class="showcase-item" style="background:linear-gradient(135deg, #f3f0fc 0%, #ede6fa 50%, #e8dff8 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;" data-title="家庭教育讲座" data-description="邀请专家进行家庭教育专题讲座，分享先进教育理念。" data-category="专家讲座" data-img="images/lecture.jpg" data-videos="videos/lecture-1.mp4,videos/lecture-2.mp4,videos/lecture-3.mp4">
+                        <!-- 舞台灯光背景图案 -->
+                        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(180deg, transparent 0%, rgba(150,120,200,0.04) 100%)"></div>
+                        <div style="position:absolute; top:15%; left:50%; transform:translateX(-50%); width:50px; height:50px; background:radial-gradient(circle, rgba(180,160,220,0.1) 0%, transparent 70%); border-radius:50%;"></div>
+                        <div style="font-size:2.8rem; margin-bottom:8px; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));">🎤</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem; z-index:1; font-weight:700;">专家讲座</h5>
+                        <p style="text-align:center; color:#556677; font-size:0.85rem; padding:0 12px; z-index:1;">先进教育理念</p>
                     </div>
-                    <div class="showcase-item" style="background:#fd79a8; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="心理健康指导" data-description="提供专业的心理健康指导，帮助家长关注孩子心理发展。" data-category="心理健康" data-img="images/mental-health.jpg" data-videos="videos/mental-health-1.mp4,videos/mental-health-2.mp4,videos/mental-health-3.mp4">
-                        <div style="font-size:2.2rem; margin-bottom:12px;">💆</div>
-                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">心理健康</h5>
-                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">关注心理发展</p>
+                    <div class="showcase-item" style="background:linear-gradient(135deg, #ffe4ed 0%, #ffd9e6 50%, #ffcde0 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;" data-title="心理健康指导" data-description="提供专业的心理健康指导，帮助家长关注孩子心理发展。" data-category="心理健康" data-img="images/mental-health.jpg" data-videos="videos/mental-heath-1.mp4,videos/mental-health-2.mp4,videos/mental-health-3.mp4">
+                        <!-- 心形装饰背景 -->
+                        <div style="position:absolute; top:-15%; right:-15%; width:150px; height:150px; background:rgba(240,150,180,0.08); border-radius:50%; transform:rotate(45deg);"></div>
+                        <div style="position:absolute; bottom:-20%; left:-20%; width:120px; height:120px; background:rgba(240,150,180,0.06); border-radius:50%;"></div>
+                        <div style="font-size:2.8rem; margin-bottom:8px; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));">💆</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem; z-index:1; font-weight:700;">心理健康</h5>
+                        <p style="text-align:center; color:#556677; font-size:0.85rem; padding:0 12px; z-index:1;">关注心理发展</p>
                     </div>
-                    <div class="showcase-item" style="background:#fdcb6e; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="学习习惯培养" data-description="指导家长如何帮助孩子养成良好的学习习惯。" data-category="学习指导" data-img="images/study-habits.jpg" data-videos="videos/study-habits-1.mp4,videos/study-habits-2.mp4,videos/study-habits-3.mp4">
-                        <div style="font-size:2.2rem; margin-bottom:12px;">📝</div>
-                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">学习习惯</h5>
-                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">培养良好习惯</p>
+                    <div class="showcase-item" style="background:linear-gradient(135deg, #fff5e6 0%, #fff3df 50%, #fff0d9 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;" data-title="学习习惯培养" data-description="指导家长如何帮助孩子养成良好的学习习惯。" data-category="学习指导" data-img="images/study-habits.jpg" data-videos="videos/study-habit-1.mp4,videos/study-habit-2.mp4,videos/study-habit-3.mp4">
+                        <!-- 书本叠放背景图案 -->
+                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:80px; height:60px; opacity:0.08;">
+                            <div style="position:absolute; width:100%; height:16px; background:#f57c00; border-radius:2px; transform:rotateX(10deg) translateY(0);"></div>
+                            <div style="position:absolute; width:90%; height:14px; background:#f57c00; border-radius:2px; transform:rotateX(10deg) translateY(20px) translateX(5px);"></div>
+                            <div style="position:absolute; width:80%; height:12px; background:#f57c00; border-radius:2px; transform:rotateX(10deg) translateY(38px) translateX(10px);"></div>
+                        </div>
+                        <div style="font-size:2.8rem; margin-bottom:8px; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));">📝</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem; z-index:1; font-weight:700;">学习习惯</h5>
+                        <p style="text-align:center; color:#556677; font-size:0.85rem; padding:0 12px; z-index:1;">培养良好习惯</p>
                     </div>
-                    <div class="showcase-item" style="background:#6c5ce7; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="沟通技巧培训" data-description="教授家长与孩子有效沟通的技巧和方法。" data-category="沟通技巧" data-img="images/communication.jpg" data-videos="videos/communication-1.mp4,videos/communication-2.mp4,videos/communication-3.mp4">
-                        <div style="font-size:2.2rem; margin-bottom:12px;">💬</div>
-                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">沟通技巧</h5>
-                        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">有效沟通方法</p>
+                    <div class="showcase-item" style="background:linear-gradient(135deg, #f0ebf8 0%, #e8e0f5 50%, #e0d5f2 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;" data-title="沟通技巧培训" data-description="教授家长与孩子有效沟通的技巧和方法。" data-category="沟通技巧" data-img="images/communication.jpg" data-videos="videos/communication-1.mp4,videos/communication-2.mp4,videos/communication-3.mp4">
+                        <!-- 气泡对话背景图案 -->
+                        <div style="position:absolute; top:20%; left:15%; width:45px; height:30px; background:rgba(120,100,180,0.08); border-radius:15px; border:2px solid rgba(120,100,180,0.12);"></div>
+                        <div style="position:absolute; top:25%; right:15%; width:45px; height:30px; background:rgba(120,100,180,0.06); border-radius:15px; border:2px solid rgba(120,100,180,0.1);"></div>
+                        <div style="position:absolute; bottom:25%; left:50%; transform:translateX(-50%); width:3px; height:20px; background:rgba(120,100,180,0.12);"></div>
+                        <div style="font-size:2.8rem; margin-bottom:8px; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));">💬</div>
+                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem; z-index:1; font-weight:700;">沟通技巧</h5>
+                        <p style="text-align:center; color:#556677; font-size:0.85rem; padding:0 12px; z-index:1;">有效沟通方法</p>
                     </div>
                 </div>
             </div>
@@ -1174,7 +1198,7 @@
                     🔍 见"微"知"数"
                 </h3>
                 <div class="showcase-grid">
-                    <div class="showcase-item" style="background:#e8f5e9; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="数学微课" data-description="开发了针对初中数学重点难点的系列微课，帮助学生掌握核心知识点。" data-category="数学微课" data-img="images/math-microcourse.jpg">
+                    <div class="showcase-item" style="background:#e8f5e9; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="数学微课" data-description="开发了针对初中数学重点难点的系列微课，帮助学生掌握核心知识点。" data-category="数学微课" data-img="images/math-microcourse.jpg" data-videos="videos/导数与函数的单调性.mp4,videos/正态分布.mp4">
                         <div style="font-size:2.2rem; margin-bottom:12px;">➗</div>
                         <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">数学微课</h5>
                         <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">掌握核心知识</p>
@@ -1189,7 +1213,7 @@
                         <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">语文微课</h5>
                         <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">提升语文素养</p>
                     </div>
-                    <div class="showcase-item" style="background:#ffeaa7; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="数学家的故事" data-description="介绍古今中外著名数学家的生平事迹和数学贡献，激励学生学习热情。" data-category="数学故事" data-img="images/mathematician-story.jpg">
+                    <div class="showcase-item" style="background:#ffeaa7; display:flex; flex-direction:column; justify-content:center; align-items:center;" data-title="数学家的故事" data-description="介绍古今中外著名数学家的生平事迹和数学贡献，激励学生学习热情。" data-category="数学故事" data-img="images/mathematician-story.jpg" data-videos="videos/mathematicians-story-1.mp4,videos/mathematicians-story-2.mp4,videos/mathematicians-story-3.mp4">
                         <div style="font-size:2.2rem; margin-bottom:12px;">👤</div>
                         <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem;">数学家的故事</h5>
                         <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0 12px;">激励学习热情</p>
@@ -1365,76 +1389,53 @@
         <span id="busuanzi_container_site_pv">
             本站访问人数：<span id="busuanzi_value_site_pv">0</span>人
         </span>
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <script>
-            // 创建一个函数来应用偏移量
-            function applyOffset(elementId) {
-                const element = document.getElementById(elementId);
-                if(element && element.textContent.trim() !== '') {
-                    const currentValue = parseInt(element.textContent) || 0;
-                    const adjustedValue = currentValue + 1000;
-                    // 避免重复添加偏移量
-                    if(currentValue < 1000) { // 如果当前值小于1000，说明是原始值
-                        element.textContent = adjustedValue.toString();
-                    }
-                }
-            }
-            
-            // 使用MutationObserver监听不蒜子更新
-            const targetElements = ['busuanzi_value_site_pv']; // 现在只有一个ID，因为两个地方都使用相同的ID
-            
-            // 首先确保页面加载后执行一次
-            document.addEventListener('DOMContentLoaded', function() {
-                // 稍微延时以确保不蒜子已加载数据
-                setTimeout(() => {
-                    targetElements.forEach(function(elementId) {
-                        applyOffset(elementId);
-                    });
-                }, 1000);
-            });
-            
-            // 监听不蒜子脚本加载完成事件
-            if (window.Busuanzi) {
-                // 如果不蒜子已加载，直接应用偏移
-                setTimeout(() => {
-                    targetElements.forEach(function(elementId) {
-                        applyOffset(elementId);
-                    });
-                }, 1000);
-            }
-            
-            // 监听不蒜子计数完成事件
-            var script = document.querySelector('script[src*="busuanzi"]');
-            if (script) {
-                script.addEventListener('load', function() {
-                    // 不蒜子脚本加载完成后，稍等一下再应用偏移
-                    setTimeout(() => {
-                        targetElements.forEach(function(elementId) {
-                            applyOffset(elementId);
-                        });
-                    }, 1500);
+            const bottomCounterId = 'busuanzi_value_site_pv';
+            const topCounterId = 'busuanzi_value_site_pv_nav';
+            const offsetValue = 1000;
+
+            function syncVisitorCount() {
+                const bottomElement = document.getElementById(bottomCounterId);
+                const topElement = document.getElementById(topCounterId);
+                if (!bottomElement || !topElement) return;
+
+                    const rawValue = parseInt(bottomElement.textContent.trim()) || 0;
+                const adjustedValue = rawValue < offsetValue ? rawValue + offsetValue : rawValue;
+                bottomElement.textContent = adjustedValue.toString();
+                topElement.style.opacity = '0';
+                window.requestAnimationFrame(() => {
+                    topElement.textContent = adjustedValue.toString();
+                    topElement.style.opacity = '1';
                 });
             }
-            
-            // 使用MutationObserver监听不蒜子更新
-            targetElements.forEach(function(elementId) {
-                const element = document.getElementById(elementId);
-                if(element) {
-                    const observer = new MutationObserver(function(mutations) {
-                        mutations.forEach(function(mutation) {
-                            if (mutation.type === 'childList' || mutation.type === 'characterData') {
-                                applyOffset(elementId);
-                            }
-                        });
-                    });
-                    
-                    observer.observe(element, {
-                        childList: true,
-                        characterData: true,
-                        subtree: true
-                    });
-                }
+
+            function observeAndSync() {
+                const bottomElement = document.getElementById(bottomCounterId);
+                if (!bottomElement) return;
+
+                const observer = new MutationObserver(() => {
+                    syncVisitorCount();
+                });
+
+                observer.observe(bottomElement, {
+                    childList: true,
+                    characterData: true,
+                    subtree: true
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(syncVisitorCount, 1200);
+                observeAndSync();
             });
+
+            const busuanziScript = document.querySelector('script[src*="busuanzi"]');
+            if (busuanziScript) {
+                busuanziScript.addEventListener('load', function() {
+                    setTimeout(syncVisitorCount, 1200);
+                });
+            }
         </script>
     </div>
 
@@ -1639,15 +1640,97 @@
     const modalCategory = document.getElementById('modalCategory');
     document.querySelectorAll('.showcase-item').forEach(item => {
         item.addEventListener('click', () => {
-            modalTitle.textContent = item.dataset.title;
-            modalDesc.textContent = item.dataset.description;
-            modalCategory.textContent = item.dataset.category;
-            const imgSrc = item.dataset.img;
-            if (imgSrc && imgSrc.trim() !== '') { modalImg.src = imgSrc;
-                modalImg.style.display = 'block';
-                modalImg.alt = item.dataset.title; } else { modalImg.style.display = 'none'; }
-            modalOverlay.classList.add('show');
-            document.body.style.overflow = 'hidden';
+            // 检查是否包含视频数据
+            const videosData = item.dataset.videos;
+            if (videosData && videosData.trim() !== '') {
+                // 包含视频数据，打开视频播放弹窗
+                const videoOverlay = document.getElementById('videoOverlay');
+                const videoDetailTitle = document.getElementById('videoDetailTitle');
+                const videoValue = document.getElementById('videoValue');
+                const videoUnit = document.getElementById('videoUnit');
+                const videoDetailDesc = document.getElementById('videoDetailDesc');
+                const videoList = document.getElementById('videoList');
+                const videoPlayer = document.getElementById('videoPlayer');
+                const videoTitle = document.getElementById('videoTitle');
+                const videoPlaceholder = document.getElementById('videoPlaceholder');
+                
+                videoDetailTitle.textContent = item.dataset.title;
+                videoValue.textContent = '';
+                videoUnit.textContent = '';
+                videoDetailDesc.textContent = item.dataset.description;
+                
+                // 解析视频列表
+                const videosArray = videosData.split(',').map(v => v.trim()).filter(v => v);
+                
+                videoList.innerHTML = '';
+                
+                if (videosArray.length === 0) {
+                    videoPlaceholder.style.display = 'block';
+                    videoPlayer.style.display = 'none';
+                    videoTitle.textContent = '';
+                } else {
+                    videoPlaceholder.style.display = 'none';
+                    videoPlayer.style.display = 'block';
+                    
+                    // 生成视频列表项
+                    videosArray.forEach((videoPath, idx) => {
+                        const fileName = videoPath.split('/').pop().replace('.mp4', '');
+                        const videoName = fileName.replace(/-/g, ' '); // 将连字符替换为空格作为显示名称
+                        
+                        const item = document.createElement('div');
+                        item.className = 'video-item' + (idx === 0 ? ' active' : '');
+                        item.textContent = videoName;
+                        
+                        // 从视频路径获取视频源
+                        const videoSrc = videoPath;
+                        
+                        item.addEventListener('click', () => {
+                            // 更新视频源
+                            videoPlayer.src = videoSrc;
+                            
+                            // 更新标题
+                            videoTitle.textContent = videoName;
+                            
+                            // 更新激活状态
+                            document.querySelectorAll('#videoList .video-item').forEach((v, i) => {
+                                v.classList.remove('active');
+                            });
+                            item.classList.add('active');
+                            
+                            // 播放视频
+                            videoPlayer.play();
+                        });
+                        
+                        videoList.appendChild(item);
+                    });
+                    
+                    // 设置默认播放第一个视频
+                    const firstVideoPath = videosArray[0];
+                    const firstFileName = firstVideoPath.split('/').pop().replace('.mp4', '');
+                    const firstVideoName = firstFileName.replace(/-/g, ' ');
+                    
+                    videoTitle.textContent = firstVideoName;
+                    videoPlayer.src = firstVideoPath;
+                }
+                
+                videoOverlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            } else {
+                // 没有视频数据，打开图片展示弹窗
+                modalTitle.textContent = item.dataset.title;
+                modalDesc.textContent = item.dataset.description;
+                modalCategory.textContent = item.dataset.category;
+                const imgSrc = item.dataset.img;
+                if (imgSrc && imgSrc.trim() !== '') { 
+                    modalImg.src = imgSrc;
+                    modalImg.style.display = 'block';
+                    modalImg.alt = item.dataset.title; 
+                } else { 
+                    modalImg.style.display = 'none'; 
+                }
+                modalOverlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
         });
     });
     function closeModal() { modalOverlay.classList.remove('show');
