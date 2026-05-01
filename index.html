@@ -1061,7 +1061,7 @@
             <li style="margin-left: 12px; display: flex; align-items: center;">
                 <div style="display: flex; align-items: center; gap: 4px; font-size: 0.9rem;">
                     <span style="font-size: 1.1rem; color: #e74c3c;">🔥</span>
-                    <span id="busuanzi_value_site_pv_nav" data-busuanzi="site_pv" style="color: #333; font-weight: 600;">0</span>
+                    <span id="busuanzi_value_site_pv_nav" data-busuanzi-copy style="color: #333; font-weight: 600;">0</span>
                 </div>
             </li>
         </ul>
@@ -1383,60 +1383,59 @@
 <!-- 访问量统计 -->
     <div style="text-align:center; padding:20px 0; margin-top:40px; color:var(--text-muted); font-size:0.9rem; border-top:1px solid var(--border);">
         <span id="busuanzi_container_site_pv">
-            本站访问人数：<span id="busuanzi_value_site_pv_footer" data-busuanzi="site_pv">0</span>人
+            本站访问人数：<span id="busuanzi_value_site_pv">0</span>人
         </span>
         <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <script>
-            const busuanziNodes = Array.from(document.querySelectorAll('[data-busuanzi="site_pv"]'));
+            const busuanziSource = document.getElementById('busuanzi_value_site_pv');
+            const busuanziCopies = Array.from(document.querySelectorAll('[data-busuanzi-copy]'));
 
-            function applyOffset(node) {
-                if (!node) return;
-                const text = node.textContent.trim();
+            function syncBusuanziValue() {
+                if (!busuanziSource) return;
+                const text = busuanziSource.textContent.trim();
                 if (text === '') return;
 
                 const currentValue = parseInt(text.replace(/\D/g, ''), 10) || 0;
                 const adjustedValue = currentValue + 1000;
 
-                if (!node.dataset.adjusted || node.dataset.adjusted !== 'true') {
-                    node.textContent = adjustedValue.toString();
-                    node.dataset.adjusted = 'true';
+                if (!busuanziSource.dataset.adjusted) {
+                    busuanziSource.textContent = adjustedValue.toString();
+                    busuanziSource.dataset.adjusted = 'true';
                 }
-            }
 
-            function updateBusuanziNodes() {
-                busuanziNodes.forEach(applyOffset);
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(updateBusuanziNodes, 1000);
-            });
-
-            if (window.Busuanzi) {
-                setTimeout(updateBusuanziNodes, 1000);
-            }
-
-            const script = document.querySelector('script[src*="busuanzi"]');
-            if (script) {
-                script.addEventListener('load', function() {
-                    setTimeout(updateBusuanziNodes, 1500);
+                busuanziCopies.forEach(function(copy) {
+                    copy.textContent = busuanziSource.textContent;
                 });
             }
 
-            busuanziNodes.forEach(function(node) {
+            function observeBusuanziSource() {
+                if (!busuanziSource) return;
                 const observer = new MutationObserver(function(mutations) {
                     mutations.forEach(function(mutation) {
                         if (mutation.type === 'childList' || mutation.type === 'characterData') {
-                            updateBusuanziNodes();
+                            syncBusuanziValue();
                         }
                     });
                 });
 
-                observer.observe(node, {
+                observer.observe(busuanziSource, {
                     childList: true,
                     characterData: true,
                     subtree: true
                 });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(syncBusuanziValue, 1000);
+                observeBusuanziSource();
             });
+
+            const busuanziScript = document.querySelector('script[src*="busuanzi"]');
+            if (busuanziScript) {
+                busuanziScript.addEventListener('load', function() {
+                    setTimeout(syncBusuanziValue, 1500);
+                });
+            }
         </script>
     </div>
 
