@@ -21,10 +21,6 @@
             --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.03);
             --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.06);
         }
-        .visitor-count-fade {
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
         * {
             margin: 0;
             padding: 0;
@@ -1065,7 +1061,7 @@
             <li style="margin-left: 12px; display: flex; align-items: center;">
                 <div style="display: flex; align-items: center; gap: 4px; font-size: 0.9rem;">
                     <span style="font-size: 1.1rem; color: #e74c3c;">🔥</span>
-                    <span id="busuanzi_value_site_pv_nav" class="visitor-count-fade" style="color: #333; font-weight: 600;">0</span>
+                    <span id="busuanzi_value_site_pv_nav" data-busuanzi="site_pv" style="color: #333; font-weight: 600;">0</span>
                 </div>
             </li>
         </ul>
@@ -1387,55 +1383,60 @@
 <!-- 访问量统计 -->
     <div style="text-align:center; padding:20px 0; margin-top:40px; color:var(--text-muted); font-size:0.9rem; border-top:1px solid var(--border);">
         <span id="busuanzi_container_site_pv">
-            本站访问人数：<span id="busuanzi_value_site_pv">0</span>人
+            本站访问人数：<span id="busuanzi_value_site_pv_footer" data-busuanzi="site_pv">0</span>人
         </span>
         <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <script>
-            const bottomCounterId = 'busuanzi_value_site_pv';
-            const topCounterId = 'busuanzi_value_site_pv_nav';
-            const offsetValue = 1000;
+            const busuanziNodes = Array.from(document.querySelectorAll('[data-busuanzi="site_pv"]'));
 
-            function syncVisitorCount() {
-                const bottomElement = document.getElementById(bottomCounterId);
-                const topElement = document.getElementById(topCounterId);
-                if (!bottomElement || !topElement) return;
+            function applyOffset(node) {
+                if (!node) return;
+                const text = node.textContent.trim();
+                if (text === '') return;
 
-                    const rawValue = parseInt(bottomElement.textContent.trim()) || 0;
-                const adjustedValue = rawValue < offsetValue ? rawValue + offsetValue : rawValue;
-                bottomElement.textContent = adjustedValue.toString();
-                topElement.style.opacity = '0';
-                window.requestAnimationFrame(() => {
-                    topElement.textContent = adjustedValue.toString();
-                    topElement.style.opacity = '1';
+                const currentValue = parseInt(text.replace(/\D/g, ''), 10) || 0;
+                const adjustedValue = currentValue + 1000;
+
+                if (!node.dataset.adjusted || node.dataset.adjusted !== 'true') {
+                    node.textContent = adjustedValue.toString();
+                    node.dataset.adjusted = 'true';
+                }
+            }
+
+            function updateBusuanziNodes() {
+                busuanziNodes.forEach(applyOffset);
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(updateBusuanziNodes, 1000);
+            });
+
+            if (window.Busuanzi) {
+                setTimeout(updateBusuanziNodes, 1000);
+            }
+
+            const script = document.querySelector('script[src*="busuanzi"]');
+            if (script) {
+                script.addEventListener('load', function() {
+                    setTimeout(updateBusuanziNodes, 1500);
                 });
             }
 
-            function observeAndSync() {
-                const bottomElement = document.getElementById(bottomCounterId);
-                if (!bottomElement) return;
-
-                const observer = new MutationObserver(() => {
-                    syncVisitorCount();
+            busuanziNodes.forEach(function(node) {
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.type === 'childList' || mutation.type === 'characterData') {
+                            updateBusuanziNodes();
+                        }
+                    });
                 });
 
-                observer.observe(bottomElement, {
+                observer.observe(node, {
                     childList: true,
                     characterData: true,
                     subtree: true
                 });
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(syncVisitorCount, 1200);
-                observeAndSync();
             });
-
-            const busuanziScript = document.querySelector('script[src*="busuanzi"]');
-            if (busuanziScript) {
-                busuanziScript.addEventListener('load', function() {
-                    setTimeout(syncVisitorCount, 1200);
-                });
-            }
         </script>
     </div>
 
