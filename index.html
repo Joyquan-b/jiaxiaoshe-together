@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高校赋能·家校社四维共振协同育人新体系 | 湖南科技大学</title>
+    <title>高校赋能·家校社四维共振 协同智慧育人平台 | 湖南科技大学</title>
     <style>
         :root {
             --bg: #f4f7fc;
@@ -152,6 +152,18 @@
             box-shadow: 0 0 10px rgba(46, 125, 50, 0.4);
             animation: pulse-dot 2s infinite;
         }
+        .nav-logo-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-right: 30px;
+        }
+        .nav-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+            white-space: nowrap;
+        }
         @keyframes pulse-dot {
             0%,
             100% {
@@ -263,6 +275,7 @@
             max-width: 780px;
             position: relative;
             z-index: 2;
+            padding-top: 80px;
         }
         .hero-badge {
             display: inline-block;
@@ -523,7 +536,7 @@
         /* 团队卡片 */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             position: relative;
             z-index: 2;
@@ -1050,7 +1063,13 @@
 
     <!-- 导航栏 -->
     <nav class="navbar" id="navbar">
-        <a href="#" class="nav-logo"><span class="logo-dot"></span>家校社·四维共振</a>
+        <div class="nav-logo-container">
+            <a href="#" class="nav-logo">
+                <img src="images/hnut_logo.png" alt="湖南科技大学" style="height: 30px; width: 30px; margin-right: 12px; border-radius: 4px;">
+                家校社·四维共振
+            </a>
+            <div class="nav-subtitle">🏫 湖南科技大学校级大学生创新训练项目</div>
+        </div>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home" class="nav-link">首页</a></li>
             <li><a href="#overview" class="nav-link">项目概述</a></li>
@@ -1073,13 +1092,19 @@
     <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <div class="hero-badge">🏫 湖南科技大学 · 大学生创新训练项目（省级）</div>
-            <h1><span class="highlight">高校赋能</span>·家校社<br><span class="highlight">四维共振</span>协同育人新体系</h1>
-            <p>聚焦"双减"背景下家校社协同育人难题，构建<strong>学校主导、高校赋能、家庭参与、社区联动</strong>的四维协同模式，以湘潭市九华江声中学为试点，探索可复制的现代化育人实践路径。</p>
+            <h1 style="font-family: 'STXingkai', '华文行楷', 'KaiTi', '楷体', 'SimKai', 'serif'; text-align: center; line-height: 1.2; font-size: 4.05em;">
+    <span style="display: block; max-width: 100%;">
+        <span class="highlight">高校赋能</span>·家校社四维共振<br>
+        协同智慧育人平台
+    </span>
+</h1>
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <p style="font-size: 1.0rem; line-height: 1.5; text-align: center; max-width: 800px; margin: 25px auto 20px;">聚焦"双减"背景下家校社协同育人难题，构建<strong>学校主导、高校赋能、家庭参与、社区联动</strong>的四维共振、智慧联动协同育人平台。</p>
             <div class="hero-buttons">
                 <a href="#mode" class="btn btn-primary">U-ECPF模式详解</a>
                 <a href="#achievements" class="btn btn-outline">查看项目成果</a>
             </div>
+        </div>
 
         </div>
         <div class="scroll-indicator"><div class="scroll-mouse"></div><span>向下滚动了解详情</span></div>
@@ -1089,15 +1114,14 @@
     <section class="section" id="overview">
         <div class="section-label">项目概述</div>
         <h2 class="section-title">以高校智慧赋能基础教育协同育人</h2>
-        <p class="section-desc">本项目以湘潭市雨湖区九华江声中学为试点，构建"学校主导、高校赋能、家庭参与、社区联动"的四维协同模式，开发50余节家庭教育微课，搭建智慧教育平台，建立三级家长委员会，开展大学生返乡社区教育服务，破解理念分歧、沟通低效、资源分散等痛点。</p>
-        <!-- 图片预留：项目总体框架图 -->
-        <div style="background:var(--surface); border:2px dashed var(--border); border-radius:var(--radius-lg); padding:40px; text-align:center; margin-bottom:30px; color:var(--text-muted);">
-            📷 <strong>【图片预留位置】</strong> 请在此处插入项目总体框架图或研究内容图（参考申报书中图1）<br>
-            <span style="font-size:0.85rem;">建议尺寸：宽1200px，替换方式：删除本段文字，添加 &lt;img src="images/framework.jpg" alt="研究内容框架图" style="width:100%; border-radius:14px;"&gt;</span>
+        <p class="section-desc" style="max-width: 1100px;">本项目以湘潭市雨湖区九华江声中学、湘潭市九华街道合山社区为试点，构建"学校主导、高校赋能、家庭参与、社区联动"的四维协同育人的新体系，通过开发家庭教育微课，搭建智慧教育平台，打造联动社区的育人课程，开展大学生返乡社区教育服务等，破解理念分歧、沟通低效、资源分散等痛点，既推动了家庭和学校的育人理念达成同频共振，也帮助更多中学学生理清了成长的核心方向。</p>
+        <!-- 项目总体框架图 -->
+        <div style="margin-bottom:25px; text-align: center; background: white; padding: 5px; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,0.08);">
+            <img src="images/framework.jpg" alt="U-ECPF高校赋能四维协同育人模式图" style="width: 100%; max-width: 800px; height: auto; border-radius: 6px; object-fit: contain;">
         </div>
         <div class="stats-row">
-            <div class="stat-card" data-type="video" data-title="家庭教育微课" data-value="50" data-unit="节" data-description="开发了50余节针对初中生家庭教育的系列微课，涵盖学段衔接、心理健康、生涯规划、家校沟通等主题。" data-videos="导数与函数的单调性,正态分布,微课3（待上传）,微课4（待上传）" data-video0="videos/导数与函数的单调性.mp4" data-video1="videos/正态分布.mp4" data-video2="" data-video3="" style="cursor:pointer;">
-                <h3 class="counter" data-target="50">0</h3><span>家庭教育微课（节）</span>
+            <div class="stat-card" data-type="video" data-title="累计服务青少年数" data-value="超2000+" data-unit="人次" data-description="累计服务青少年超过2000人次，通过家校社协同育人模式，有效提升了学生的综合素质和成长质量。" data-videos="" style="cursor:pointer;">
+                <h3 class="counter" data-target="2000">0</h3><span>累计服务青少年数（人次）</span>
             </div>
             <div class="stat-card" data-title="覆盖家庭" data-value="100" data-unit="户" data-description="项目覆盖了湘潭经开区内试点中学的100户家庭，涉及初中一、二年级学生及其家长。" data-images="images/family-1.jpg,images/family-2.jpg,images/family-3.jpg" style="cursor:pointer;">
                 <h3 class="counter" data-target="100">0</h3><span>覆盖家庭（户）</span>
@@ -1108,12 +1132,7 @@
             <div class="stat-card" data-title="家长满意度" data-value="90" data-unit="%" data-description="通过问卷调查、座谈会等方式评估家长对项目的满意度，结果显示整体满意度达到90%以上。" data-images="images/satisfaction-1.jpg,images/satisfaction-2.jpg,images/satisfaction-3.jpg" style="cursor:pointer;">
                 <h3 class="counter" data-target="90">0</h3><span>家长满意度（%）</span>
             </div>
-            <div class="stat-card" data-title="家庭教育指导师" data-value="25" data-unit="名" data-description="培育并认证了25名家庭教育指导师，其中2名获得国家二级心理咨询师资格，为家校社协同育人提供专业支撑。" data-images="images/instructors-1.jpg,images/instructors-2.jpg,images/instructors-3.jpg" style="cursor:pointer;">
-                <h3 class="counter" data-target="25">0</h3><span>家庭教育指导师（名）</span>
-            </div>
-            <div class="stat-card" data-title="试点初中" data-value="3" data-unit="所" data-description="项目在湘潭经开区内建立了3所试点初中，分别为九华江声中学、泉湖中学、智谷中学，形成协同育人试验阵地。" data-images="images/school-1.jpg,images/school-2.jpg,images/school-3.jpg" style="cursor:pointer;">
-                <h3 class="counter" data-target="3">0</h3><span>试点初中（所）</span>
-            </div>
+
         </div>
     </section>
 
@@ -1121,7 +1140,14 @@
     <section class="section" id="mode">
         <div class="section-label">核心框架</div>
         <h2 class="section-title">U-ECPF · 高校赋能四维协同育人体系</h2>
-        <p class="section-desc">以高校为核心引领，整合教育、协同、平台、成长四大赋能维度，构建权责清晰、多方联动的现代化育人生态。平台设置了家庭教育资源库、学科微课中心、数学故事等三个主要资源模块，实现了优质教育资源的常态化更新与无门槛开放共享。</p>
+        <p class="section-desc" style="line-height: 1.8; max-width: 1050px;">
+            U（University）指高校核心引领（体系总核心）；<br>
+            E（Education）指教育赋能（学业辅导、职业启蒙、班会教学）；<br>
+            C（Coordination）指协同赋能（家校社四方联动、资源打通）；<br>
+            P（Platform）指平台赋能（网站平台搭建、线上资源供给）；<br>
+            F（Fostering）指成长赋能（心理疏导、素质提升、全面发展）。<br>
+            平台共设置了家庭教育资源库、学科微课中心、数学故事三个主要资源模块，实现了优质教育资源的常态化更新与无门槛开放共享。
+        </p>
         <p style="text-align:center; color:var(--text-muted); margin-bottom:40px; font-size:0.95rem;">
             📊 <strong>累计成果：</strong>已累计上传学科微课 <span style="color:var(--primary); font-weight:700;">20余节</span>、家庭教育系列课程 <span style="color:var(--primary); font-weight:700;">10套</span>，收录家校社协同优秀实践案例 <span style="color:var(--primary); font-weight:700;">多个</span>
         </p>
@@ -1209,74 +1235,61 @@
                 <h3 style="text-align:center; font-size:1.5rem; color:#0f2b45; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid #2e7d32;">
                     🔍 见"微"知"数"
                 </h3>
-                <div class="showcase-grid">
-                    <div class="showcase-item" style="background:linear-gradient(135deg, #e8f5e9 0%, #def2e0 50%, #d4eed7 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;" data-title="数学微课" data-description="开发了针对初中数学重点难点的系列微课，帮助学生掌握核心知识点。" data-category="数学微课" data-img="images/math-microcourse.jpg" data-videos="videos/导数与函数的单调性.mp4,videos/正态分布.mp4">
-                        <!-- 数学公式背景图案 -->
-                        <div style="position:absolute; top:15%; left:15%; width:25px; height:15px; border:1px solid rgba(46,125,50,0.15); border-radius:3px; transform:rotate(5deg);"></div>
-                        <div style="position:absolute; top:25%; right:20%; width:20px; height:12px; border:1px solid rgba(46,125,50,0.12); border-radius:3px; transform:rotate(-10deg);"></div>
-                        <div style="position:absolute; bottom:20%; left:20%; width:30px; height:18px; border:1px solid rgba(46,125,50,0.1); border-radius:3px; transform:rotate(8deg);"></div>
-                        <div style="position:absolute; bottom:15%; right:25%; width:15px; height:10px; border:1px solid rgba(46,125,50,0.08); border-radius:3px; transform:rotate(-15deg);"></div>
-                        <div style="position:absolute; top:40%; left:30%; width:22px; height:14px; border:1px solid rgba(46,125,50,0.1); border-radius:3px; transform:rotate(12deg);"></div>
-                        <div style="font-size:2.8rem; margin-bottom:8px; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));">➗</div>
-                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem; z-index:1; font-weight:700;">数学微课</h5>
-                        <p style="text-align:center; color:#556677; font-size:0.85rem; padding:0 12px; z-index:1;">掌握核心知识</p>
-                    </div>
-                    <div class="showcase-item" style="background:linear-gradient(135deg, #d1f2eb 0%, #c6eee3 50%, #bbeadb 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;" data-title="物理微课" data-description="生动有趣的物理实验和原理讲解，激发学生学习兴趣。" data-category="物理微课" data-img="images/physics-microcourse.jpg">
-                        <!-- 物理实验背景图案 -->
-                        <div style="position:absolute; top:15%; left:15%; width:20px; height:20px; border:1px solid rgba(40,120,150,0.15); border-radius:50%;"></div>
-                        <div style="position:absolute; top:25%; right:20%; width:15px; height:15px; border:1px solid rgba(40,120,150,0.12); border-radius:50%;"></div>
-                        <div style="position:absolute; bottom:20%; left:20%; width:18px; height:18px; border:1px solid rgba(40,120,150,0.1); border-radius:50%;"></div>
-                        <div style="position:absolute; bottom:15%; right:25%; width:12px; height:12px; border:1px solid rgba(40,120,150,0.08); border-radius:50%;"></div>
-                        <div style="position:absolute; top:40%; left:30%; width:16px; height:16px; border:1px solid rgba(40,120,150,0.1); border-radius:50%;"></div>
-                        <div style="font-size:2.8rem; margin-bottom:8px; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));">⚛️</div>
-                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem; z-index:1; font-weight:700;">物理微课</h5>
-                        <p style="text-align:center; color:#556677; font-size:0.85rem; padding:0 12px; z-index:1;">激发学习兴趣</p>
-                    </div>
-                    <div class="showcase-item" style="background:linear-gradient(135deg, #fce4ec 0%, #fae0ea 50%, #f8dae7 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;" data-title="语文微课" data-description="经典文学赏析和写作技巧指导，提升学生语文素养。" data-category="语文微课" data-img="images/chinese-microcourse.jpg">
-                        <!-- 文字墨迹背景图案 -->
-                        <div style="position:absolute; top:15%; left:15%; width:20px; height:20px; background:rgba(200,100,150,0.08); border-radius:50%; transform:rotate(45deg);"></div>
-                        <div style="position:absolute; top:25%; right:20%; width:15px; height:15px; background:rgba(200,100,150,0.06); border-radius:50%; transform:rotate(15deg);"></div>
-                        <div style="position:absolute; bottom:20%; left:20%; width:18px; height:18px; background:rgba(200,100,150,0.1); border-radius:50%; transform:rotate(-10deg);"></div>
-                        <div style="position:absolute; bottom:15%; right:25%; width:12px; height:12px; background:rgba(200,100,150,0.05); border-radius:50%; transform:rotate(25deg);"></div>
-                        <div style="position:absolute; top:40%; left:30%; width:16px; height:16px; background:rgba(200,100,150,0.07); border-radius:50%; transform:rotate(-5deg);"></div>
-                        <div style="font-size:2.8rem; margin-bottom:8px; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));">📚</div>
-                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem; z-index:1; font-weight:700;">语文微课</h5>
-                        <p style="text-align:center; color:#556677; font-size:0.85rem; padding:0 12px; z-index:1;">提升语文素养</p>
-                    </div>
-                    <div class="showcase-item" style="background:linear-gradient(135deg, #ffeaa7 0%, #ffe59f 50%, #ffe097 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;" data-title="数学家的故事" data-description="介绍古今中外著名数学家的生平事迹和数学贡献，激励学生学习热情。" data-category="数学故事" data-img="images/mathematician-story.jpg" data-videos="videos/mathematicians-story-1.mp4,videos/mathematicians-story-2.mp4,videos/mathematicians-story-3.mp4">
-                        <!-- 历史人物传记背景图案 -->
-                        <div style="position:absolute; top:15%; left:15%; width:25px; height:30px; border:1px solid rgba(200,150,50,0.15); border-radius:3px; transform:rotate(5deg);"></div>
-                        <div style="position:absolute; top:25%; right:20%; width:20px; height:25px; border:1px solid rgba(200,150,50,0.12); border-radius:3px; transform:rotate(-8deg);"></div>
-                        <div style="position:absolute; bottom:20%; left:20%; width:30px; height:35px; border:1px solid rgba(200,150,50,0.1); border-radius:3px; transform:rotate(10deg);"></div>
-                        <div style="position:absolute; bottom:15%; right:25%; width:15px; height:20px; border:1px solid rgba(200,150,50,0.08); border-radius:3px; transform:rotate(-15deg);"></div>
-                        <div style="position:absolute; top:40%; left:30%; width:22px; height:28px; border:1px solid rgba(200,150,50,0.1); border-radius:3px; transform:rotate(12deg);"></div>
-                        <div style="font-size:2.8rem; margin-bottom:8px; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));">👤</div>
-                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem; z-index:1; font-weight:700;">数学家的故事</h5>
-                        <p style="text-align:center; color:#556677; font-size:0.85rem; padding:0 12px; z-index:1;">激励学习热情</p>
-                    </div>
-                    <div class="showcase-item" style="background:linear-gradient(135deg, #fab1a0 0%, #f9a996 50%, #f8a18c 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;" data-title="趣味数学" data-description="生动有趣的数学趣题和游戏，让学生在玩乐中感受数学的魅力。" data-category="趣味数学" data-img="images/fun-math.jpg">
-                        <!-- 趣味游戏背景图案 -->
-                        <div style="position:absolute; top:15%; left:20%; width:15px; height:15px; background:rgba(200,100,80,0.15); border-radius:50%; transform:rotate(45deg);"></div>
-                        <div style="position:absolute; top:25%; right:25%; width:12px; height:12px; background:rgba(200,100,80,0.12); border-radius:50%; transform:rotate(15deg);"></div>
-                        <div style="position:absolute; bottom:20%; left:30%; width:10px; height:10px; background:rgba(200,100,80,0.18); border-radius:50%; transform:rotate(-10deg);"></div>
-                        <div style="position:absolute; bottom:25%; right:30%; width:14px; height:14px; background:rgba(200,100,80,0.1); border-radius:50%; transform:rotate(20deg);"></div>
-                        <div style="position:absolute; top:40%; left:35%; width:11px; height:11px; background:rgba(200,100,80,0.16); border-radius:50%; transform:rotate(-5deg);"></div>
-                        <div style="font-size:2.8rem; margin-bottom:8px; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));">🎲</div>
-                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem; z-index:1; font-weight:700;">趣味数学</h5>
-                        <p style="text-align:center; color:#556677; font-size:0.85rem; padding:0 12px; z-index:1;">感受数学魅力</p>
-                    </div>
-                    <div class="showcase-item" style="background:linear-gradient(135deg, #74b9ff 0%, #68b1ff 50%, #5da9ff 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;" data-title="数学史话" data-description="讲述数学发展历程中的重要事件和发现，拓展学生视野。" data-category="数学史话" data-img="images/math-history.jpg">
-                        <!-- 历史时间轴背景图案 -->
-                        <div style="position:absolute; top:15%; left:15%; width:20px; height:20px; border:1px solid rgba(100,150,255,0.15); border-radius:50%;"></div>
-                        <div style="position:absolute; top:25%; right:20%; width:15px; height:15px; border:1px solid rgba(100,150,255,0.12); border-radius:50%;"></div>
-                        <div style="position:absolute; bottom:20%; left:20%; width:18px; height:18px; border:1px solid rgba(100,150,255,0.1); border-radius:50%;"></div>
-                        <div style="position:absolute; bottom:15%; right:25%; width:12px; height:12px; border:1px solid rgba(100,150,255,0.08); border-radius:50%;"></div>
-                        <div style="position:absolute; top:40%; left:30%; width:16px; height:16px; border:1px solid rgba(100,150,255,0.1); border-radius:50%;"></div>
-                        <div style="font-size:2.8rem; margin-bottom:8px; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));">📜</div>
-                        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem; z-index:1; font-weight:700;">数学史话</h5>
-                        <p style="text-align:center; color:#556677; font-size:0.85rem; padding:0 12px; z-index:1;">拓展学生视野</p>
+                <!-- 第一行：数学微课 -->
+                <div style="margin-bottom:30px;">
+                    <h4 style="text-align:center; color:#1a5c9e; margin-bottom:15px; font-size:1.2rem;">数学微课</h4>
+                    <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+                        <div style="flex:1; min-width:280px; max-width:320px;">
+                            <video controls style="width:100%; height:auto; max-height:200px; border-radius:8px;">
+                                <source src="videos/导数与函数的单调性.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                            <p style="text-align:center; margin-top:8px; font-size:0.9rem; color:#556677;">导数与函数的单调性</p>
+                        </div>
+                        <div style="flex:1; min-width:280px; max-width:320px;">
+                            <video controls style="width:100%; height:auto; max-height:200px; border-radius:8px;">
+                                <source src="videos/正态分布.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                            <p style="text-align:center; margin-top:8px; font-size:0.9rem; color:#556677;">正态分布</p>
+                        </div>
+                        <div style="flex:1; min-width:280px; max-width:320px;">
+                            <video controls style="width:100%; height:auto; max-height:200px; border-radius:8px;">
+                                <source src="videos/三角形内角和定理.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                            <p style="text-align:center; margin-top:8px; font-size:0.9rem; color:#556677;">三角形内角和定理</p>
+                        </div>
                     </div>
                 </div>
+                <!-- 第二行：数学故事 -->
+                <div>
+                    <h4 style="text-align:center; color:#2e7d32; margin-bottom:15px; font-size:1.2rem;">数学故事</h4>
+                    <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+                        <div style="flex:1; min-width:280px; max-width:320px;">
+                            <video controls style="width:100%; height:auto; max-height:200px; border-radius:8px;">
+                                <source src="videos/mathematicians-story-1.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                            <p style="text-align:center; margin-top:8px; font-size:0.9rem; color:#556677;">数学家的故事-1</p>
+                        </div>
+                        <div style="flex:1; min-width:280px; max-width:320px;">
+                            <video controls style="width:100%; height:auto; max-height:200px; border-radius:8px;">
+                                <source src="videos/mathematicians-story-2.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                            <p style="text-align:center; margin-top:8px; font-size:0.9rem; color:#556677;">数学家的故事-2</p>
+                        </div>
+                        <div style="flex:1; min-width:280px; max-width:320px;">
+                            <video controls style="width:100%; height:auto; max-height:200px; border-radius:8px;">
+                                <source src="videos/mathematicians-story-3.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                            <p style="text-align:center; margin-top:8px; font-size:0.9rem; color:#556677;">数学家的故事-3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
             
         </div>
@@ -1286,67 +1299,83 @@
     <section class="section" id="achievements">
         <div class="section-label">项目成果</div>
         <h2 class="section-title">阶段性成果与荣誉</h2>
-        <p class="section-desc">项目已在湘潭经开区3所初中开展试点，取得显著成效并获得多项荣誉。</p>
-        <div class="showcase-grid" id="showcaseGrid">
-            <div class="showcase-item" style="background:linear-gradient(135deg, #e8f0f8 0%, #e0eaf7 50%, #d8e4f6 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;"
-            data-title="湘潭市'示范家长学校'"
-            data-category="荣誉资质 · 2024年"
-            data-description="九华江声中学家长学校在2024年被评为湘潭市'示范家长学校'，家长参与家校活动的比例达到95%以上，家长自愿参与家校活动得到质的飞跃。"
-            data-img="images/award1.jpg">
-            <!-- 荣誉奖章背景图案 -->
-            <div style="position:absolute; top:10%; left:10%; width:20px; height:20px; border:1px solid rgba(100,150,200,0.15); border-radius:50%; transform:rotate(45deg);"></div>
-            <div style="position:absolute; top:25%; right:15%; width:15px; height:15px; border:1px solid rgba(100,150,200,0.12); border-radius:50%; transform:rotate(15deg);"></div>
-            <div style="position:absolute; bottom:20%; left:20%; width:12px; height:12px; background:rgba(100,150,200,0.08); border-radius:50%;"></div>
-            <div style="position:absolute; bottom:15%; right:25%; width:18px; height:18px; border:1px solid rgba(100,150,200,0.1); border-radius:50%; transform:rotate(-20deg);"></div>
-            <div style="position:absolute; top:40%; left:50%; transform:translate(-50%, -50%); width:25px; height:25px; border:1px solid rgba(100,150,200,0.1); border-radius:50%;"></div>
-            <div style="position:absolute; top:15%; left:30%; width:12px; height:12px; background:rgba(100,150,200,0.12); border-radius:50%;"></div>
-            <div style="position:absolute; bottom:15%; right:35%; width:15px; height:15px; border:1px solid rgba(100,150,200,0.09); border-radius:50%;"></div>
-            <div style="font-size:2.8rem; margin-bottom:8px; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));">🏆</div>
-            <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem; z-index:1; font-weight:700;">示范家长学校</h5>
-            <span style="color:#1a5c9e; font-size:0.9rem; z-index:1;">2024年市级荣誉</span>
+        <p class="section-desc">项目已在湘潭经开区多所学校和社区开展试点，取得显著成效并获得多项荣誉。</p>
+        
+        <!-- 第一版块：九华江声中学 -->
+        <div style="margin-bottom:40px;">
+            <h3 style="text-align:center; font-size:1.4rem; color:#0f2b45; margin-bottom:20px; padding-bottom:10px; border-bottom:2px solid #1a5c9e; display:inline-block; width:100%;">
+                🏫 九华江声中学
+            </h3>
+            <p style="text-align:center; color:var(--text-muted); font-size:1rem; margin-bottom:20px;">职业、心理教育 · 成立"家长委员会"</p>
+            <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:16px; max-width:1200px; margin:0 auto;">
+                <!-- 第1行 -->
+                <div style="background:#f5f5f5; border-radius:10px; overflow:hidden; aspect-ratio:4/3;">
+                    <img src="images/jiangsh_school_1.jpg" alt="九华江声中学活动1" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div style="background:#f5f5f5; border-radius:10px; overflow:hidden; aspect-ratio:4/3;">
+                    <img src="images/jiangsh_school_2.jpg" alt="九华江声中学活动2" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div style="background:#f5f5f5; border-radius:10px; overflow:hidden; aspect-ratio:4/3;">
+                    <img src="images/jiangsh_school_3.jpg" alt="九华江声中学活动3" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <!-- 第2行 -->
+                <div style="background:#f5f5f5; border-radius:10px; overflow:hidden; aspect-ratio:4/3;">
+                    <img src="images/jiangsh_school_4.jpg" alt="九华江声中学活动4" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div style="background:#f5f5f5; border-radius:10px; overflow:hidden; aspect-ratio:4/3;">
+                    <img src="images/jiangsh_school_5.jpg" alt="九华江声中学活动5" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div style="background:#f5f5f5; border-radius:10px; overflow:hidden; aspect-ratio:4/3;">
+                    <img src="images/jiangsh_school_6.jpg" alt="九华江声中学活动6" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <!-- 第3行 -->
+                <div style="background:#f5f5f5; border-radius:10px; overflow:hidden; aspect-ratio:4/3;">
+                    <img src="images/jiangsh_school_7.jpg" alt="九华江声中学活动7" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div style="background:#f5f5f5; border-radius:10px; overflow:hidden; aspect-ratio:4/3;">
+                    <img src="images/jiangsh_school_8.jpg" alt="九华江声中学活动8" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div style="background:#f5f5f5; border-radius:10px; overflow:hidden; aspect-ratio:4/3;">
+                    <img src="images/jiangsh_school_9.jpg" alt="九华江声中学活动9" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+            </div>
         </div>
-        <div class="showcase-item" style="background:linear-gradient(135deg, #e8f5e9 0%, #dfeee0 50%, #d6e7d7 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;"
-        data-title="家庭教育微课资源库"
-        data-category="课程建设 · 50+节"
-        data-description="建立了一套针对初中生家庭教育的、有实效有学校特色的家校社协同育人课程资源，涵盖学段衔接、心理健康、生涯规划、家校沟通等主题，其中12节课程入选省级家庭教育资源库。"
-        data-img="images/course1.jpg">
-        <!-- 课程资源背景图案 -->
-        <div style="position:absolute; top:15%; left:15%; width:20px; height:20px; border:1px solid rgba(50,120,80,0.15); border-radius:3px;"></div>
-        <div style="position:absolute; top:25%; right:20%; width:15px; height:15px; border:1px solid rgba(50,120,80,0.12); border-radius:3px;"></div>
-        <div style="position:absolute; bottom:20%; left:25%; width:18px; height:18px; border:1px solid rgba(50,120,80,0.1); border-radius:3px;"></div>
-        <div style="position:absolute; top:40%; left:30%; width:25px; height:25px; border:1px solid rgba(50,120,80,0.08); border-radius:3px;"></div>
-        <div style="position:absolute; top:15%; right:15%; width:12px; height:12px; background:rgba(50,120,80,0.1); border-radius:3px;"></div>
-        <div style="position:absolute; bottom:15%; left:35%; width:15px; height:15px; border:1px solid rgba(50,120,80,0.09); border-radius:3px;"></div>
-        <div style="font-size:2.8rem; margin-bottom:8px; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));">🎬</div>
-        <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem; z-index:1; font-weight:700;">微课资源库</h5>
-        <span style="color:#2e7d32; font-size:0.9rem; z-index:1;">50+节课程</span>
-    </div>
-    <div class="showcase-item" style="background:linear-gradient(135deg, #fdf2e9 0%, #fceed1 50%, #fbeac9 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;"
-    data-title="三级家长委员会机制"
-    data-category="机制创新"
-    data-description="创新建立班级、年级、校级三级家长委员会运作机制，设立校长信箱与家长开放日制度，构建起覆盖95%家庭的常态化沟通网络，家长逐渐实现从'受教育者'到'教育合伙人'的转变。"
-    data-img="images/committee.jpg">
-    <!-- 组织架构连接背景图案 -->
-    <div style="position:absolute; top:15%; left:15%; width:12px; height:12px; background:rgba(200,150,50,0.2); border-radius:50%;"></div>
-    <div style="position:absolute; top:25%; right:20%; width:10px; height:10px; background:rgba(200,150,50,0.18); border-radius:50%;"></div>
-    <div style="position:absolute; bottom:20%; left:25%; width:14px; height:14px; background:rgba(200,150,50,0.22); border-radius:50%;"></div>
-    <div style="position:absolute; top:40%; left:35%; width:8px; height:8px; background:rgba(200,150,50,0.15); border-radius:50%;"></div>
-    <div style="position:absolute; top:15%; left:15%; width:60px; height:1px; background:linear-gradient(90deg, transparent, rgba(200,150,50,0.1), transparent); transform:rotate(20deg);"></div>
-    <div style="position:absolute; top:25%; right:20%; width:70px; height:1px; background:linear-gradient(90deg, transparent, rgba(200,150,50,0.08), transparent); transform:rotate(-30deg);"></div>
-    <div style="position:absolute; bottom:20%; left:25%; width:50px; height:1px; background:linear-gradient(90deg, transparent, rgba(200,150,50,0.12), transparent); transform:rotate(10deg);"></div>
-    <div style="position:absolute; top:35%; left:25%; width:10px; height:10px; background:rgba(200,150,50,0.18); border-radius:50%;"></div>
-    <div style="position:absolute; bottom:25%; right:20%; width:12px; height:12px; background:rgba(200,150,50,0.15); border-radius:50%;"></div>
-    <div style="font-size:2.8rem; margin-bottom:8px; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));">👥</div>
-    <h5 style="margin:8px 0; color:#0f2b45; font-size:1.1rem; z-index:1; font-weight:700;">三级家委会</h5>
-    <span style="color:#f57c00; font-size:0.9rem; z-index:1;">机制创新</span>
-</div>
-</div>
-<div style="text-align:center; margin-top:30px;">
-    <p style="color:var(--text-muted); font-size:0.9rem;">
-        📄 <strong>更多成果：</strong>培育2名国家二级心理咨询师、25名家庭教育指导师 | 论文获省级奖项5项 | 成果在雨湖区德育会议、五校联合教研等平台推广 | 获《光明日报》《红网》等多家媒体报道
-    </p>
-</div>
-</section>
+        
+        <!-- 第二版块：合山社区 -->
+        <div>
+            <h3 style="text-align:center; font-size:1.4rem; color:#0f2b45; margin-bottom:20px; padding-bottom:10px; border-bottom:2px solid #2e7d32; display:inline-block; width:100%;">
+                🏘️ 合山社区
+            </h3>
+            <p style="text-align:center; color:var(--text-muted); font-size:1rem; margin-bottom:20px;">成立"数梦阳光课堂辅导班"</p>
+            <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:16px; max-width:1200px; margin:0 auto;">
+                <!-- 第1行 -->
+                <div style="background:#f5f5f5; border-radius:10px; overflow:hidden; aspect-ratio:4/3;">
+                    <img src="images/heshanshequ_1.jpg" alt="合山社区活动1" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div style="background:#f5f5f5; border-radius:10px; overflow:hidden; aspect-ratio:4/3;">
+                    <img src="images/heshanshequ_2.jpg" alt="合山社区活动2" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div style="background:#f5f5f5; border-radius:10px; overflow:hidden; aspect-ratio:4/3;">
+                    <img src="images/heshanshequ_3.jpg" alt="合山社区活动3" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <!-- 第2行 -->
+                <div style="background:#f5f5f5; border-radius:10px; overflow:hidden; aspect-ratio:4/3;">
+                    <img src="images/heshanshequ_4.jpg" alt="合山社区活动4" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div style="background:#f5f5f5; border-radius:10px; overflow:hidden; aspect-ratio:4/3;">
+                    <img src="images/heshanshequ_5.jpg" alt="合山社区活动5" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div style="background:#f5f5f5; border-radius:10px; overflow:hidden; aspect-ratio:4/3;">
+                    <img src="images/heshanshequ_6.jpg" alt="合山社区活动6" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+                    <p style="color:#666; font-size:0.85rem; margin-top:8px;">数梦阳光课堂辅导班-3</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <!-- 团队成员 -->
 <section class="section" id="team">
@@ -1400,7 +1429,7 @@
             <div class="role" style="font-size:0.9rem; margin-bottom:12px; padding:6px 16px; border-radius:20px; display:inline-block; background:rgba(156, 39, 176, 0.1);">核心成员</div>
             <div class="task" style="font-size:0.9rem; line-height:1.6;">运营平台与策划社区活动；22数学三班</div>
         </div>
-        <div class="team-card" style="grid-column: 2 / 4; justify-self: center; max-width: 300px;">
+        <div class="team-card">
             <div class="team-avatar" style="box-shadow:0 8px 20px rgba(239, 108, 0, 0.2); border:3px solid #fff3e0;">
                 👩‍⚕️
             </div>
@@ -1416,15 +1445,13 @@
     <div class="section-label">合作网络</div>
     <h2 class="section-title">实践基地与合作单位</h2>
     <p class="section-desc">项目已与多所中学、社区、乡村及高校建立长期稳定的合作关系。</p>
-    <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:16px;">
+    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:16px;">
         <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🏫<br><strong>九华江声中学</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">试点学校·湘潭</span></div>
         <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🏘️<br><strong>合山社区</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">新时代文明实践站</span></div>
-        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🏡<br><strong>蓬瀛村</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">邵阳市城步县</span></div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🏡<br><strong>邵阳市城步县蓬瀛村</stron><br><span style="font-size:0.8rem;color:var(--text-muted);">邵阳市城步县</span></div>
         <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🎓<br><strong>湖南科技大学</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">学术资源支持</span></div>
         <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🎓<br><strong>湘潭大学</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">数独课程合作</span></div>
-        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🏛️<br><strong>湘潭经开区教育局</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">政策支持</span></div>
-        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">👥<br><strong>区妇联</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">家庭教育联动</span></div>
-        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🏥<br><strong>九华街道社工站</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">心理服务协作</span></div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">🏛️<br><strong>数学与统计学院</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">政策支持</span></div>
     </div>
 </section>
 
@@ -1454,7 +1481,7 @@
 
 <!-- 页脚 -->
 <footer class="footer">
-    <span>© 2025 高校赋能·家校社四维共振协同育人新体系 | 湖南科技大学</span>
+    <span>© 2025 高校赋能·家校社四维共振 协同智慧育人平台 | 湖南科技大学</span>
     <div class="footer-links">
         <a href="#home">首页</a><a href="#overview">项目概述</a><a href="#mode">U-ECPF</a><a href="#achievements">成果</a><a href="#team">团队</a>
     </div>
@@ -2008,7 +2035,15 @@
                     const progress = Math.min((timestamp - start) / duration, 1);
                     el.textContent = Math.floor(progress * target);
                     if (progress < 1) requestAnimationFrame(step);
-                    else el.textContent = target;
+                    else {
+                        // 检查原始值是否包含+号
+                        const originalValue = el.parentElement.querySelector('span').textContent;
+                        if (originalValue.includes('2000+') || el.parentElement.getAttribute('data-value')?.includes('+')) {
+                            el.textContent = target + '+';
+                        } else {
+                            el.textContent = target;
+                        }
+                    }
                 };
                 requestAnimationFrame(step);
                 counterObserver.unobserve(el);
