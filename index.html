@@ -1612,12 +1612,14 @@
             <p style="color:var(--text-muted);">📍 地址：湖南省湘潭市·湖南科技大学</p>
             <p style="color:var(--text-muted);">🏫 试点学校：湘潭市雨湖区九华江声中学</p>
         </div>
-        <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="handleFormSubmit(event)">
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/mvzlqdkq" method="POST" onsubmit="handleFormSubmit(event)">
             <input type="text" name="name" placeholder="您的姓名 *" required>
             <input type="email" name="email" placeholder="电子邮箱 *" required>
             <input type="text" name="organization" placeholder="单位/学校名称">
             <textarea name="message" placeholder="请描述您想了解的内容或合作意向..." rows="4" required></textarea>
             <button type="submit" class="btn btn-primary">发送消息</button>
+            <input type="hidden" name="_subject" value="家校社协同育人项目咨询">
+            <input type="hidden" name="_next" value="https://your-domain.com/thank-you.html">
         </form>
     </div>
     </section>
